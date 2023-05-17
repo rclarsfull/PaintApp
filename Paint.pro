@@ -6,7 +6,7 @@ DEFINES += QT_WIDGETS_LIB
 INCLUDEPATH += .
 
 HEADERS += paint.h \
-           GraphObjekt.h \
+           graphObjekt.h \
            canvas.h  \
            circle.h \
            freehanddrawing.h \
