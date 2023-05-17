@@ -32,6 +32,8 @@ protected:
 private:
 	bool dragging;
 	PrimitiveMode type;
+    QPoint lastMouseClickPos;
+    QPoint lastMouseRealesePos;
 };
 
 #endif // CANVAS_H

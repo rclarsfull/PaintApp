@@ -57,6 +57,34 @@ void Canvas::paintEvent(QPaintEvent *event)
     painter.setBrush(Qt::darkGreen);
     painter.drawEllipse(QPoint(width()/2, height()/2), 8, 8);
     */
+    switch(type){
+    case NONE:
+        qDebug() << "Error: no Paint type declared!\n";
+        break;
+    case LINE:
+        painter.setPen(QPen(Qt::black));
+        painter.drawLine(lastMouseClickPos,lastMouseRealesePos);
+        break;
+    case RECTANGLE:
+
+        break;
+    case CIRCLE:
+
+        break;
+    case FREE_HAND:
+
+        break;
+    case TRIANGLE:
+
+        break;
+    case POLYGON:
+
+        break;
+
+    }
+
+
+
 }
 
 void Canvas::resizeEvent(QResizeEvent *event) 
@@ -71,9 +99,10 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 
 		// TODO; implement mouse interaction
 		// Mouse position given as follows
-		//QPoint currPos = event->pos();
+        lastMouseClickPos = event->pos();
+        lastMouseRealesePos = lastMouseClickPos;
 
-		update();
+        update();
 	}
 }
 
@@ -82,15 +111,22 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 	if ((event->buttons() & Qt::LeftButton) && dragging) {
 
 		// TODO
+        qDebug() << "bewegt sich\n";
+        lastMouseRealesePos = event->pos();
 
-		update();
-	}
+
+        update();
+    }else{
+        lastMouseClickPos = QPoint(0,0);
+        lastMouseRealesePos = QPoint(0,0);
+    }
 }
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && dragging) {
 		dragging = false;
+        lastMouseRealesePos = event->pos();
 
 		// TODO
 
