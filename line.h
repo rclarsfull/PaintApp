@@ -7,8 +7,10 @@
 class Line : public GraphObjekt
 {
 
+
 public:
     Line();
+    ~Line();
 };
 
 #endif // LINE_H
