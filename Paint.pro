@@ -11,6 +11,8 @@ HEADERS += paint.h \
            circle.h \
            freehanddrawing.h \
            line.h \
+           polygone.h \
+           rectangle.h \
            triangle.h
 SOURCES += paint.cpp \
            canvas.cpp \
@@ -18,4 +20,6 @@ SOURCES += paint.cpp \
            freehanddrawing.cpp \
            line.cpp \
            main.cpp \
+           polygone.cpp \
+           rectangle.cpp \
            triangle.cpp
