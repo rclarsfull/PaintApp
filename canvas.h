@@ -39,7 +39,7 @@ private:
     QPoint lastMouseClickPos;
     QPoint lastMouseRealesePos;
     Scene scene;
-    bool FillMode;
+    bool fillMode;
     QColor color;
 };
 

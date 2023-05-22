@@ -10,6 +10,7 @@ class Scene
     GraphObjekt *currentObjekt;
 public:
     Scene();
+    ~Scene();
     void setCurrentObjekt(GraphObjekt *graphObjekt);
     GraphObjekt* getCurrentObjekt();
     void addCurentObjektToList();

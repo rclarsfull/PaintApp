@@ -4,6 +4,15 @@ Scene::Scene():graphObjekts(),currentObjekt(nullptr)
 {
 
 }
+Scene::~Scene()
+{
+    for(int i = 0;i < graphObjekts.size();i++){
+        if(graphObjekts.at(i) != nullptr)
+           delete graphObjekts[i];
+    }
+    if(currentObjekt != nullptr)
+        delete currentObjekt;
+}
 
 void Scene::setCurrentObjekt(GraphObjekt *graphObjekt)
 {

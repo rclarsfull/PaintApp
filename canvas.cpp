@@ -44,7 +44,7 @@ void Canvas::setPrimitiveMode(int mode)
 
 void Canvas::setFillMode(bool isFilled)
 {
-    this->FillMode = isFilled;
+    fillMode = isFilled;
 }
 
 void Canvas::setObjColor(QColor color)
@@ -92,11 +92,10 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 		// TODO; implement mouse interaction
 		// Mouse position given as follows
         lastMouseClickPos = event->pos();
-        lastMouseRealesePos = lastMouseClickPos;
 
         switch(type){
         case NONE:
-            //qDebug() << "Error: no Paint type declared!\n";
+            qDebug() << "Error: no Paint type declared!\n";
             break;
         case LINE:
 
@@ -128,21 +127,18 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 {
 	if ((event->buttons() & Qt::LeftButton) && dragging) {
 
-		// TODO
-        qDebug() << "bewegt sich\n";
-        lastMouseRealesePos = event->pos();
         switch(type){
         case NONE:
             //qDebug() << "Error: no Paint type declared!\n";
             break;
         case LINE:
-            scene.setCurrentObjekt(new Line(lastMouseClickPos,lastMouseRealesePos,color));
+            scene.setCurrentObjekt(new Line(lastMouseClickPos,event->pos(),color));
             break;
         case RECTANGLE:
 
             break;
         case CIRCLE:
-            scene.setCurrentObjekt(new Circle(lastMouseClickPos,lastMouseRealesePos,color));
+            scene.setCurrentObjekt(new Circle(lastMouseClickPos,event->pos(),color,fillMode));
             break;
         case FREE_HAND:
             dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());
@@ -163,34 +159,7 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && dragging) {
 		dragging = false;
-        lastMouseRealesePos = event->pos();
         scene.addCurentObjektToList();
-
-        switch(type){
-        case NONE:
-            //qDebug() << "Error: no Paint type declared!\n";
-            break;
-        case LINE:
-
-            break;
-        case RECTANGLE:
-
-            break;
-        case CIRCLE:
-
-            break;
-        case FREE_HAND:
-
-            break;
-        case TRIANGLE:
-
-            break;
-        case POLYGON:
-
-            break;
-
-        }
-
 		update();
 	}
 }

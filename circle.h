@@ -8,8 +8,9 @@ class Circle: public GraphObjekt
 {
 private:
     QPoint outerPoint;
+    bool filled;
 public:
-    Circle(QPoint origen, QPoint outerPoint, QColor color);
+    Circle(QPoint origen, QPoint outerPoint, QColor color, bool filled);
     ~Circle() override;
     void setOrigin(QPoint point) override;
     QPoint getOrigin() override;
