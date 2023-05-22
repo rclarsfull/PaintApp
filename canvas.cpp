@@ -3,9 +3,12 @@
 #include <QMouseEvent>
 #include <math.h>
 #include "canvas.h"
+#include "graphObjekt.h"
+#include "line.h"
+#include "circle.h"
 
 Canvas::Canvas(QWidget *parent)
-	: QFrame(parent)
+    : QFrame(parent),scene(Scene())
 {
 	setFrameStyle(QFrame::Box);
 	setMouseTracking(true);
@@ -35,7 +38,17 @@ void Canvas::clearCanvas(void)
 
 void Canvas::setPrimitiveMode(int mode)
 {
-	type = (Canvas::PrimitiveMode)mode;
+    type = (Canvas::PrimitiveMode)mode;
+}
+
+void Canvas::setFillMode(bool isFilled)
+{
+    this->FillMode = isFilled;
+}
+
+void Canvas::setObjColor(QColor color)
+{
+    this->color = color;
 }
 
 void Canvas::paintEvent(QPaintEvent *event)
@@ -49,39 +62,17 @@ void Canvas::paintEvent(QPaintEvent *event)
 
     // TODO; implement drawing functionality for all the primitives!
     // The following is just a basic example and to be removed...
+
+    //painter.setPen(QPen(color, 2, Qt::SolidLine));
     /*
-    painter.setPen(QPen(Qt::red, 2, Qt::SolidLine));
     painter.drawLine(QPoint(2, height()/2), QPoint(width()-2, height()/2));
     painter.drawLine(QPoint(width()/2, 2), QPoint(width()/2, height()-2));
     painter.setPen(Qt::blue);
     painter.setBrush(Qt::darkGreen);
     painter.drawEllipse(QPoint(width()/2, height()/2), 8, 8);
     */
-    switch(type){
-    case NONE:
-        qDebug() << "Error: no Paint type declared!\n";
-        break;
-    case LINE:
-        painter.setPen(QPen(Qt::black));
-        painter.drawLine(lastMouseClickPos,lastMouseRealesePos);
-        break;
-    case RECTANGLE:
+    scene.drawAll(painter);
 
-        break;
-    case CIRCLE:
-
-        break;
-    case FREE_HAND:
-
-        break;
-    case TRIANGLE:
-
-        break;
-    case POLYGON:
-
-        break;
-
-    }
 
 
 
@@ -102,6 +93,7 @@ void Canvas::mousePressEvent(QMouseEvent *event)
         lastMouseClickPos = event->pos();
         lastMouseRealesePos = lastMouseClickPos;
 
+
         update();
 	}
 }
@@ -113,6 +105,30 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 		// TODO
         qDebug() << "bewegt sich\n";
         lastMouseRealesePos = event->pos();
+        switch(type){
+        case NONE:
+            //qDebug() << "Error: no Paint type declared!\n";
+            break;
+        case LINE:
+            scene.setCurrentObjekt(new Line(lastMouseClickPos,lastMouseRealesePos,color));
+            break;
+        case RECTANGLE:
+
+            break;
+        case CIRCLE:
+            scene.setCurrentObjekt(new Circle(lastMouseClickPos,lastMouseRealesePos,color));
+            break;
+        case FREE_HAND:
+
+            break;
+        case TRIANGLE:
+
+            break;
+        case POLYGON:
+
+            break;
+
+        }
         update();
     }
 }
@@ -122,8 +138,32 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 	if (event->button() == Qt::LeftButton && dragging) {
 		dragging = false;
         lastMouseRealesePos = event->pos();
+        scene.addCurentObjektToList();
 
-		// TODO
+        switch(type){
+        case NONE:
+            //qDebug() << "Error: no Paint type declared!\n";
+            break;
+        case LINE:
+
+            break;
+        case RECTANGLE:
+
+            break;
+        case CIRCLE:
+
+            break;
+        case FREE_HAND:
+
+            break;
+        case TRIANGLE:
+
+            break;
+        case POLYGON:
+
+            break;
+
+        }
 
 		update();
 	}

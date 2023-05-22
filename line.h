@@ -2,6 +2,7 @@
 #define LINE_H
 
 #include <QPoint>
+#include <QLine>
 #include "GraphObjekt.h"
 
 
@@ -11,10 +12,13 @@ private:
     QPoint endPoint;
 
 public:
-    Line();
+    Line(QPoint beginPoint,QPoint endPoint, QColor color);
     ~Line();
     QPoint getEndPoint();
     void setEndPoint();
+    void setOrigin(QPoint point);
+    QPoint getOrigin();
+    void draw(QPainter &painter);
 };
 
 #endif // LINE_H

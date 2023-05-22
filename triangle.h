@@ -6,13 +6,16 @@
 
 class Triangle: public GraphObjekt
 {
-    QPoint qpoints[2];
+    QPoint qPoints[2];
 public:
-    Triangle();
+    Triangle(QPoint origen, QColor color);
     ~Triangle();
 
-    void setPoint(int point);
+    void setPoint(QPoint qPoint,int point);
     QPoint getPoint(int point);
+    void setOrigin(QPoint point);
+    QPoint getOrigin();
+    void draw(QPainter &painter);
 
 };
 

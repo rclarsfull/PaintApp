@@ -6,12 +6,16 @@
 
 class Scene
 {
-    std::vector<GraphObjekt> graphObjekts;
+    std::vector<GraphObjekt*> graphObjekts;
+    GraphObjekt *currentObjekt;
 public:
     Scene();
-    void addGraphObjekt();
-    void removeGraphobjekt();
+    void setCurrentObjekt(GraphObjekt *graphObjekt);
+    void addCurentObjektToList();
+    void addGraphObjekt(GraphObjekt *graphObjekt);
+    void removeGraphobjekt(GraphObjekt *graphObjekt);
     void drawAll(QPainter &painter);
+    void clear();
 
 };
 

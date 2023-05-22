@@ -92,14 +92,14 @@ void Paint::colorBtnPressed()
     QColor color = QColorDialog::getColor(Qt::yellow, this );
     if (color.isValid()) {
         qDebug() << "Color Choosen : " << color.name();
-        //viewport->setObjColor(color);
+        viewport->setObjColor(color);
     }
 }
 
 void Paint::showOutlineOnly(bool outline)
 {
     qDebug() << "Only show outline: " << outline;
-    //viewport->setFillMode(!outline);
+    viewport->setFillMode(!outline);
 }
 
 void Paint::primModeChanged()

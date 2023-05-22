@@ -2,6 +2,7 @@
 #define CANVAS_H
 
 #include <QFrame>
+#include "scene.h"
 
 class Canvas : public QFrame
 {
@@ -21,6 +22,9 @@ public:
 	void clearCanvas(void);
 	void setPrimitiveMode(int mode);
 
+    void setFillMode(bool isFilled);
+    void setObjColor(QColor color);
+
 protected:
 	void paintEvent(QPaintEvent *event);
 	void resizeEvent(QResizeEvent *event);
@@ -34,6 +38,9 @@ private:
 	PrimitiveMode type;
     QPoint lastMouseClickPos;
     QPoint lastMouseRealesePos;
+    Scene scene;
+    bool FillMode;
+    QColor color;
 };
 
 #endif // CANVAS_H
