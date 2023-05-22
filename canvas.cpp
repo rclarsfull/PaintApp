@@ -113,12 +113,7 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 		// TODO
         qDebug() << "bewegt sich\n";
         lastMouseRealesePos = event->pos();
-
-
         update();
-    }else{
-        lastMouseClickPos = QPoint(0,0);
-        lastMouseRealesePos = QPoint(0,0);
     }
 }
 

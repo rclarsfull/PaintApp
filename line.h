@@ -14,7 +14,7 @@ public:
     Line();
     ~Line();
     QPoint getEndPoint();
-    QPoint setEndPoint();
+    void setEndPoint();
 };
 
 #endif // LINE_H
