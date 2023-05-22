@@ -3,6 +3,7 @@
 #include <QMouseEvent>
 #include <math.h>
 #include "canvas.h"
+#include "freehanddrawing.h"
 #include "graphObjekt.h"
 #include "line.h"
 #include "circle.h"
@@ -93,6 +94,31 @@ void Canvas::mousePressEvent(QMouseEvent *event)
         lastMouseClickPos = event->pos();
         lastMouseRealesePos = lastMouseClickPos;
 
+        switch(type){
+        case NONE:
+            //qDebug() << "Error: no Paint type declared!\n";
+            break;
+        case LINE:
+
+            break;
+        case RECTANGLE:
+
+            break;
+        case CIRCLE:
+
+            break;
+        case FREE_HAND:
+            scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
+            break;
+        case TRIANGLE:
+
+            break;
+        case POLYGON:
+
+            break;
+
+        }
+
 
         update();
 	}
@@ -119,7 +145,7 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
             scene.setCurrentObjekt(new Circle(lastMouseClickPos,lastMouseRealesePos,color));
             break;
         case FREE_HAND:
-
+            dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());
             break;
         case TRIANGLE:
 

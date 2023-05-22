@@ -12,6 +12,11 @@ void Scene::setCurrentObjekt(GraphObjekt *graphObjekt)
     currentObjekt = graphObjekt;
 }
 
+GraphObjekt* Scene::getCurrentObjekt()
+{
+    return currentObjekt;
+}
+
 void Scene::addCurentObjektToList()
 {
     if(currentObjekt != nullptr){

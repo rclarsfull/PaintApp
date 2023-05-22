@@ -11,6 +11,7 @@ class Scene
 public:
     Scene();
     void setCurrentObjekt(GraphObjekt *graphObjekt);
+    GraphObjekt* getCurrentObjekt();
     void addCurentObjektToList();
     void addGraphObjekt(GraphObjekt *graphObjekt);
     void removeGraphobjekt(GraphObjekt *graphObjekt);
