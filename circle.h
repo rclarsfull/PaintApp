@@ -1,7 +1,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "GraphObjekt.h"
+#include "graphObjekt.h"
 
 
 class Circle: public GraphObjekt
