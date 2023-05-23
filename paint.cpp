@@ -89,7 +89,7 @@ void Paint::deleteBtnPressed()
 
 void Paint::colorBtnPressed()
 {
-    QColor color = QColorDialog::getColor(Qt::yellow, this );
+    QColor color = QColorDialog::getColor(Qt::white, this );
     if (color.isValid()) {
         qDebug() << "Color Choosen : " << color.name();
         viewport->setObjColor(color);
