@@ -34,3 +34,8 @@ void Circle::draw(QPainter &painter)
     painter.drawEllipse(orign,distance,distance);
     painter.setBrush(QBrush(color, Qt::NoBrush));
 }
+
+void Circle::deleteWhenConnected(QPoint selected)
+{
+
+}

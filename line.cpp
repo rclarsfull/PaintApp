@@ -35,3 +35,8 @@ void Line::draw(QPainter &painter)
     painter.setPen(QPen(color,2, Qt::SolidLine));
     painter.drawLine(orign,endPoint);
 }
+
+void Line::deleteWhenConnected(QPoint selected)
+{
+
+}

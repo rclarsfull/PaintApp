@@ -24,3 +24,8 @@ void Polygone::draw(QPainter &painter)
 {
 
 }
+
+void Polygone::deleteWhenConnected(QPoint selected)
+{
+
+}

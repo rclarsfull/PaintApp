@@ -39,3 +39,8 @@ void Triangle::draw(QPainter &painter)
 {
 
 }
+
+void Triangle::deleteWhenConnected(QPoint selected)
+{
+
+}

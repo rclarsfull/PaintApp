@@ -34,7 +34,7 @@ QSize Canvas::sizeHint() const
 
 void Canvas::clearCanvas(void)
 {
-	// TODO
+    scene.clear();
 }
 
 void Canvas::setPrimitiveMode(int mode)
@@ -54,29 +54,10 @@ void Canvas::setObjColor(QColor color)
 
 void Canvas::paintEvent(QPaintEvent *event)
 {
-    QFrame::paintEvent(event);  // parent class draws border
-
+    QFrame::paintEvent(event);
     QPainter painter(this);
-
-    // white background (inside parent's border)
     painter.fillRect(QRect(1, 1, width() - 2, height() - 2), Qt::white);
-
-    // TODO; implement drawing functionality for all the primitives!
-    // The following is just a basic example and to be removed...
-
-    //painter.setPen(QPen(color, 2, Qt::SolidLine));
-    /*
-    painter.drawLine(QPoint(2, height()/2), QPoint(width()-2, height()/2));
-    painter.drawLine(QPoint(width()/2, 2), QPoint(width()/2, height()-2));
-    painter.setPen(Qt::blue);
-    painter.setBrush(Qt::darkGreen);
-    painter.drawEllipse(QPoint(width()/2, height()/2), 8, 8);
-    */
     scene.drawAll(painter);
-
-
-
-
 }
 
 void Canvas::resizeEvent(QResizeEvent *event) 
@@ -88,9 +69,6 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton) {
 		dragging = true;
-
-		// TODO; implement mouse interaction
-		// Mouse position given as follows
         lastMouseClickPos = event->pos();
 
         switch(type){
@@ -101,7 +79,7 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 
             break;
         case RECTANGLE:
-
+            qDebug() << "Not implemented!\n";
             break;
         case CIRCLE:
 
@@ -110,14 +88,12 @@ void Canvas::mousePressEvent(QMouseEvent *event)
             scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
             break;
         case TRIANGLE:
-
+            qDebug() << "Not implemented!\n";
             break;
         case POLYGON:
-
+            qDebug() << "Not implemented!\n";
             break;
-
         }
-
 
         update();
 	}
@@ -129,7 +105,7 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 
         switch(type){
         case NONE:
-            //qDebug() << "Error: no Paint type declared!\n";
+
             break;
         case LINE:
             scene.setCurrentObjekt(new Line(lastMouseClickPos,event->pos(),color));
@@ -149,7 +125,6 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
         case POLYGON:
 
             break;
-
         }
         update();
     }

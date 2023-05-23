@@ -11,6 +11,7 @@ public:
     virtual QPoint getOrigin() = 0;
     virtual void setOrigin(QPoint point) = 0;
     virtual void draw(QPainter &painter) = 0;
+    virtual void deleteWhenConnected(QPoint selected) = 0;
 protected:
     QPoint orign;
     QColor color;

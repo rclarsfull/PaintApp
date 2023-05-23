@@ -16,6 +16,7 @@ public:
     void setOrigin(QPoint point);
     QPoint getOrigin();
     void draw(QPainter &painter);
+    void deleteWhenConnected(QPoint selected) override;
 
 
 };

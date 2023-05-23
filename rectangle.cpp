@@ -34,3 +34,8 @@ void Rectangle::draw(QPainter &painter)
 {
 
 }
+
+void Rectangle::deleteWhenConnected(QPoint selected)
+{
+
+}

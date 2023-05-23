@@ -6,12 +6,7 @@ Scene::Scene():graphObjekts(),currentObjekt(nullptr)
 }
 Scene::~Scene()
 {
-    for(int i = 0;i < graphObjekts.size();i++){
-        if(graphObjekts.at(i) != nullptr)
-           delete graphObjekts[i];
-    }
-    if(currentObjekt != nullptr)
-        delete currentObjekt;
+    clear();
 }
 
 void Scene::setCurrentObjekt(GraphObjekt *graphObjekt)
@@ -43,8 +38,23 @@ void Scene::addGraphObjekt(GraphObjekt *graphObjekt)
 void Scene::drawAll(QPainter &painter)
 {
     for(int i = 0;i < graphObjekts.size();i++){
-        graphObjekts.at(i)->draw(painter);
+        if(graphObjekts.at(i) != nullptr)
+            graphObjekts[i]->draw(painter);
     }
     if(currentObjekt != nullptr)
         currentObjekt->draw(painter);
+}
+
+void Scene::clear()
+{
+    for(int i = 0;i < graphObjekts.size();i++){
+        if(graphObjekts.at(i) != nullptr){
+           delete graphObjekts[i];
+           graphObjekts[i] = nullptr;
+        }
+    }
+    if(currentObjekt != nullptr){
+        delete currentObjekt;
+        currentObjekt = nullptr;
+    }
 }

@@ -35,3 +35,8 @@ QPoint FreeHandDrawing::getOrigin()
 {
 
 }
+
+void FreeHandDrawing::deleteWhenConnected(QPoint selected)
+{
+
+}

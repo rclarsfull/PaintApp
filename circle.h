@@ -15,6 +15,7 @@ public:
     void setOrigin(QPoint point) override;
     QPoint getOrigin() override;
     void draw(QPainter &painter) override;
+    void deleteWhenConnected(QPoint selected) override;
 };
 
 #endif // CIRCLE_H
