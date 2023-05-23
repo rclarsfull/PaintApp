@@ -35,6 +35,7 @@ QSize Canvas::sizeHint() const
 void Canvas::clearCanvas(void)
 {
     scene.clear();
+   // scene.removeAllGraphobjects();
 }
 
 void Canvas::setPrimitiveMode(int mode)
