@@ -7,8 +7,9 @@
 class Rectangle: public GraphObjekt
 {
     QPoint lowerRightCorner;
+    bool filled;
 public:
-    Rectangle(QPoint origen, QColor color);
+    Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled);
     ~Rectangle();
 
     void setPoint(int point);
@@ -17,8 +18,6 @@ public:
     QPoint getOrigin() override;
     void draw(QPainter &painter) override;
     void deleteWhenConnected(QPoint selected) override;
-
-
 };
 
 #endif // RECTANGLE_H

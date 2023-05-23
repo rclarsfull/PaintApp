@@ -7,6 +7,7 @@
 #include "graphObjekt.h"
 #include "line.h"
 #include "circle.h"
+#include "rectangle.h"
 
 Canvas::Canvas(QWidget *parent)
     : QFrame(parent),scene(Scene())
@@ -80,7 +81,7 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 
             break;
         case RECTANGLE:
-            qDebug() << "Not implemented!\n";
+
             break;
         case CIRCLE:
 
@@ -112,7 +113,7 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
             scene.setCurrentObjekt(new Line(lastMouseClickPos,event->pos(),color));
             break;
         case RECTANGLE:
-
+            scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, event->pos(), color, fillMode));
             break;
         case CIRCLE:
             scene.setCurrentObjekt(new Circle(lastMouseClickPos,event->pos(),color,fillMode));
