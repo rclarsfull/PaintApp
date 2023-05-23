@@ -6,16 +6,16 @@
 #include "GraphObjekt.h"
 class Rectangle: public GraphObjekt
 {
-    QPoint qpoints[3];
+    QPoint lowerRightCorner;
 public:
     Rectangle(QPoint origen, QColor color);
     ~Rectangle();
 
     void setPoint(int point);
     QPoint getPoint(int point);
-    void setOrigin(QPoint point);
-    QPoint getOrigin();
-    void draw(QPainter &painter);
+    void setOrigin(QPoint point) override;
+    QPoint getOrigin() override;
+    void draw(QPainter &painter) override;
     void deleteWhenConnected(QPoint selected) override;
 
 
