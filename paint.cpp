@@ -74,7 +74,7 @@ Paint::~Paint()
 /** method for handling button clicked event */
 void Paint::clearBtnPressed()
 {
-	viewport->clearCanvas();
+    viewport->clearCanvas();
 
 	// force redraw
 	update();

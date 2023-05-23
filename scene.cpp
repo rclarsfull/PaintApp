@@ -40,10 +40,21 @@ void Scene::addGraphObjekt(GraphObjekt *graphObjekt)
         graphObjekts.push_back(graphObjekt);
 }
 
+void Scene::removeAllGraphobjects()
+{
+    currentObjekt = nullptr;
+    for (unsigned int i = 0; i < graphObjekts.size(); ++i) {
+        if(graphObjekts.at(i) != nullptr)
+           delete graphObjekts.at(i);
+        graphObjekts.at(i) = nullptr;
+    }
+}
+
 void Scene::drawAll(QPainter &painter)
 {
-    for(int i = 0;i < graphObjekts.size();i++){
-        graphObjekts.at(i)->draw(painter);
+    for(unsigned int i = 0;i < graphObjekts.size();i++){
+        if(graphObjekts.at(i) != nullptr)
+            graphObjekts.at(i)->draw(painter);
     }
     if(currentObjekt != nullptr)
         currentObjekt->draw(painter);
