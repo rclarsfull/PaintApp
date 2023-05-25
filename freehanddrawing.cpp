@@ -15,7 +15,7 @@ void FreeHandDrawing::draw(QPainter &painter)
     painter.setPen(QPen(color,2, Qt::SolidLine));
     if(points.size() > 0){
         painter.drawLine(orign, points.front());
-        for(int i = 0; i+1 < points.size();i++){
+        for(unsigned int i = 0; i+1 < points.size();i++){
             painter.drawLine(points.at(i),points.at(i+1));
         }
     }

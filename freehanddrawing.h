@@ -13,10 +13,10 @@ class FreeHandDrawing: public GraphObjekt
 public:
     FreeHandDrawing(QPoint origen, QColor color);
     ~FreeHandDrawing();
-    void draw(QPainter &painter);
+    void draw(QPainter &painter) override;
     void addPoint(QPoint point);
-    void setOrigin(QPoint point);
-    QPoint getOrigin();
+    void setOrigin(QPoint point) override;
+    QPoint getOrigin() override;
     void deleteWhenConnected(QPoint selected) override;
 };
 

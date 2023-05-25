@@ -7,6 +7,7 @@ class GraphObjekt{
 
 public:
     GraphObjekt(QPoint point, QColor color):orign(point),color(color){};
+    GraphObjekt(const GraphObjekt &graphobject) = delete;
     virtual ~GraphObjekt(){};
     virtual QPoint getOrigin() = 0;
     virtual void setOrigin(QPoint point) = 0;
