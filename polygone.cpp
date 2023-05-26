@@ -29,3 +29,8 @@ void Polygone::deleteWhenConnected(QPoint selected)
 {
 
 }
+
+void Polygone::update(QPoint newPoint)
+{
+
+}

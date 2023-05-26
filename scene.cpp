@@ -59,7 +59,7 @@ void Scene::drawAll(QPainter &painter)
 
 void Scene::clear()
 {
-    for(int i = 0;i < graphObjekts.size();i++){
+    for(unsigned int i = 0; i < graphObjekts.size(); i++){
         if(graphObjekts.at(i) != nullptr){
            delete graphObjekts[i];
            graphObjekts[i] = nullptr;

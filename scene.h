@@ -19,7 +19,6 @@ public:
     void removeAllGraphobjects();
     void drawAll(QPainter &painter);
     void clear();
-
 };
 
 #endif // SCENE_H

@@ -28,14 +28,19 @@ void Circle::draw(QPainter &painter)
         painter.setBrush(QBrush(color, Qt::SolidPattern));
 
     painter.setPen(QPen(color,2, Qt::SolidLine));
-    int deltaX = orign.x() - outerPoint.x();
-    int deltaY = orign.y() - outerPoint.y();
+    int deltaX = origin.x() - outerPoint.x();
+    int deltaY = origin.y() - outerPoint.y();
     int distance = std::sqrt((deltaX*deltaX)+(deltaY*deltaY));
-    painter.drawEllipse(orign,distance,distance);
+    painter.drawEllipse(origin,distance,distance);
     painter.setBrush(QBrush(color, Qt::NoBrush));
 }
 
 void Circle::deleteWhenConnected(QPoint selected)
 {
 
+}
+
+void Circle::update(QPoint newPoint)
+{
+    outerPoint = newPoint;
 }

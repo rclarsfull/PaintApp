@@ -14,7 +14,7 @@ void FreeHandDrawing::draw(QPainter &painter)
 {
     painter.setPen(QPen(color,2, Qt::SolidLine));
     if(points.size() > 0){
-        painter.drawLine(orign, points.front());
+        painter.drawLine(origin, points.front());
         for(unsigned int i = 0; i+1 < points.size();i++){
             painter.drawLine(points.at(i),points.at(i+1));
         }
@@ -37,6 +37,11 @@ QPoint FreeHandDrawing::getOrigin()
 }
 
 void FreeHandDrawing::deleteWhenConnected(QPoint selected)
+{
+
+}
+
+void FreeHandDrawing::update(QPoint newPoint)
 {
 
 }

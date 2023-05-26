@@ -36,7 +36,6 @@ QSize Canvas::sizeHint() const
 void Canvas::clearCanvas(void)
 {
     scene.clear();
-   // scene.removeAllGraphobjects();
 }
 
 void Canvas::setPrimitiveMode(int mode)
@@ -78,13 +77,13 @@ void Canvas::mousePressEvent(QMouseEvent *event)
             qDebug() << "Error: no Paint type declared!\n";
             break;
         case LINE:
-
+            scene.setCurrentObjekt(new Line(lastMouseClickPos, lastMouseClickPos, color));
             break;
         case RECTANGLE:
-
+            scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
             break;
         case CIRCLE:
-
+            scene.setCurrentObjekt(new Circle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
             break;
         case FREE_HAND:
             scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
@@ -110,13 +109,13 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 
             break;
         case LINE:
-            scene.setCurrentObjekt(new Line(lastMouseClickPos,event->pos(),color));
+            scene.getCurrentObjekt()->update(event->pos());
             break;
         case RECTANGLE:
-            scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, event->pos(), color, fillMode));
+            scene.getCurrentObjekt()->update(event->pos());
             break;
         case CIRCLE:
-            scene.setCurrentObjekt(new Circle(lastMouseClickPos,event->pos(),color,fillMode));
+            scene.getCurrentObjekt()->update(event->pos());
             break;
         case FREE_HAND:
             dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());

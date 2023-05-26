@@ -6,15 +6,16 @@
 class GraphObjekt{
 
 public:
-    GraphObjekt(QPoint point, QColor color):orign(point),color(color){};
+    GraphObjekt(QPoint point, QColor color):origin(point),color(color){};
     GraphObjekt(const GraphObjekt &graphobject) = delete;
     virtual ~GraphObjekt(){};
     virtual QPoint getOrigin() = 0;
     virtual void setOrigin(QPoint point) = 0;
     virtual void draw(QPainter &painter) = 0;
     virtual void deleteWhenConnected(QPoint selected) = 0;
+    virtual void update(QPoint newPoint) = 0;
 protected:
-    QPoint orign;
+    QPoint origin;
     QColor color;
 
 };

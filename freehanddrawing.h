@@ -18,6 +18,7 @@ public:
     void setOrigin(QPoint point) override;
     QPoint getOrigin() override;
     void deleteWhenConnected(QPoint selected) override;
+    void update(QPoint newPoint) override;
 };
 
 #endif // FREEHANDDRAWING_H

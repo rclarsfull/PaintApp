@@ -36,13 +36,18 @@ void Rectangle::draw(QPainter &painter)
         painter.setBrush(QBrush(color, Qt::SolidPattern));
 
     painter.setPen(QPen(color,2, Qt::SolidLine));
-    int width = lowerRightCorner.x() - orign.x();
-    int height = lowerRightCorner.y() - orign.y();
-    painter.drawRect(orign.x(), orign.y(), width, height);
+    int width = lowerRightCorner.x() - origin.x();
+    int height = lowerRightCorner.y() - origin.y();
+    painter.drawRect(origin.x(), origin.y(), width, height);
     painter.setBrush(QBrush(color, Qt::NoBrush));
 }
 
 void Rectangle::deleteWhenConnected(QPoint selected)
 {
 
+}
+
+void Rectangle::update(QPoint newPoint)
+{
+    lowerRightCorner = newPoint;
 }

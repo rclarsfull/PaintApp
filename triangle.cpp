@@ -15,7 +15,7 @@ void Triangle::setPoint(QPoint qPoint,int point)
     if(point < 0 || point > 4)
         return;
     if(point == 3)
-        orign = qPoint;
+        origin = qPoint;
     else
         qPoints[point] = qPoint;
 }

@@ -33,10 +33,15 @@ QPoint Line::getOrigin()
 void Line::draw(QPainter &painter)
 {
     painter.setPen(QPen(color,2, Qt::SolidLine));
-    painter.drawLine(orign,endPoint);
+    painter.drawLine(origin,endPoint);
 }
 
 void Line::deleteWhenConnected(QPoint selected)
 {
 
+}
+
+void Line::update(QPoint newPoint)
+{
+    endPoint = newPoint;
 }
