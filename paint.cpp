@@ -69,6 +69,13 @@ Paint::Paint(QWidget *parent)
 /** d'tor */
 Paint::~Paint()
 {
+    delete viewport;
+    delete btnClearCanvas;
+    delete cobPrimModes;
+    delete lblPrimModes;
+    delete btnDeleteObj;
+    delete btnChangeCol;
+    delete cbOutline;
 }
 
 /** method for handling button clicked event */
