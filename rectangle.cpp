@@ -51,3 +51,8 @@ void Rectangle::update(QPoint newPoint)
 {
     lowerRightCorner = newPoint;
 }
+
+bool Rectangle::equalPoints()
+{
+
+}

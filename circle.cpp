@@ -44,3 +44,10 @@ void Circle::update(QPoint newPoint)
 {
     outerPoint = newPoint;
 }
+
+bool Circle::equalPoints()
+{
+    if(origin.x() == outerPoint.x() && origin.y() == outerPoint.y())
+        return true;
+    return false;
+}

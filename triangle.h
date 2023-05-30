@@ -17,6 +17,7 @@ public:
     QPoint getOrigin() override;
     void draw(QPainter &painter) override;
     void deleteWhenConnected(QPoint selected) override;
+    bool equalPoints() override;
     //void moveTo(QPoint newPoint) override;
 };
 

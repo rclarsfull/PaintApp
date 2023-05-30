@@ -45,3 +45,10 @@ void FreeHandDrawing::update(QPoint newPoint)
 {
 
 }
+
+bool FreeHandDrawing::equalPoints()
+{
+    if(points.size() > 2)
+        return false;
+    return true;
+}

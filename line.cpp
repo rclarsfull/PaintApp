@@ -45,3 +45,10 @@ void Line::update(QPoint newPoint)
 {
     endPoint = newPoint;
 }
+
+bool Line::equalPoints()
+{
+    if(origin.x() == endPoint.x() && origin.y() == endPoint.y())
+        return true;
+    return false;
+}

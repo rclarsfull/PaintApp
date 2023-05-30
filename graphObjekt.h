@@ -14,6 +14,7 @@ public:
     virtual void draw(QPainter &painter) = 0;
     virtual void deleteWhenConnected(QPoint selected) = 0;
     virtual void update(QPoint newPoint) = 0;
+    virtual bool equalPoints() = 0;
 protected:
     QPoint origin;
     QColor color;

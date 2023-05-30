@@ -13,6 +13,7 @@ public:
     void draw(QPainter &painter) override;
     void deleteWhenConnected(QPoint selected) override;
     void update(QPoint newPoint) override;
+    bool equalPoints() override;
 };
 
 #endif // POLYGONE_H

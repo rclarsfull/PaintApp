@@ -44,3 +44,8 @@ void Triangle::deleteWhenConnected(QPoint selected)
 {
 
 }
+
+bool Triangle::equalPoints()
+{
+
+}
