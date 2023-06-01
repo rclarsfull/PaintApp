@@ -4,7 +4,7 @@
 #include <QPainter>
 #include <QPoint>
 #include <vector>
-#include "GraphObjekt.h"
+#include "graphObjekt.h"
 
 
 class FreeHandDrawing: public GraphObjekt

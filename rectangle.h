@@ -3,7 +3,7 @@
 
 #include <QPoint>
 #include <QPainter>
-#include "GraphObjekt.h"
+#include "graphObjekt.h"
 class Rectangle: public GraphObjekt
 {
     QPoint lowerRightCorner;

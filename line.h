@@ -3,7 +3,7 @@
 
 #include <QPoint>
 #include <QLine>
-#include "GraphObjekt.h"
+#include "graphObjekt.h"
 
 
 class Line : public GraphObjekt

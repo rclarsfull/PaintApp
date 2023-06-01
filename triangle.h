@@ -2,7 +2,7 @@
 #define TRIANGLE_H
 
 #include <QPoint>
-#include "GraphObjekt.h"
+#include "graphObjekt.h"
 
 class Triangle: public GraphObjekt
 {

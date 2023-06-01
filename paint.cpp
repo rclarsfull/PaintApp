@@ -14,6 +14,7 @@ Paint::Paint(QWidget *parent)
 {
 	// instantiate Canvas and button
 	viewport = new Canvas();
+    viewport->setFillMode(true);
 
 	btnClearCanvas = new QPushButton("&Clear Canvas");
 
