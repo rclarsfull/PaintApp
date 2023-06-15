@@ -59,3 +59,13 @@ void Scene::clear()
         currentObjekt = nullptr;
     }
 }
+
+void Scene::addToSelected(GraphObjekt *graphobject)
+{
+    selectedObjects.push_back(graphobject);
+}
+
+void Scene::clearSelected()
+{
+    selectedObjects.clear();
+}

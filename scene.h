@@ -18,6 +18,8 @@ public:
     void addGraphObjekt(GraphObjekt *graphObjekt);
     void drawAll(QPainter &painter);
     void clear();
+    void addToSelected(GraphObjekt *graphobject);
+    void clearSelected();
 };
 
 #endif // SCENE_H
