@@ -8,6 +8,7 @@ class Scene
 {
     std::vector<GraphObjekt*> graphObjekts;
     GraphObjekt *currentObjekt;
+    std::vector<GraphObjekt*> selectedObjects;
 public:
     Scene();
     ~Scene();
@@ -15,7 +16,6 @@ public:
     GraphObjekt* getCurrentObjekt();
     void addCurentObjektToList();
     void addGraphObjekt(GraphObjekt *graphObjekt);
-    void removeGraphobjekt(GraphObjekt *graphObjekt);
     void drawAll(QPainter &painter);
     void clear();
 };
