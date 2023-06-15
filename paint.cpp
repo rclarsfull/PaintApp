@@ -5,6 +5,10 @@
 #include <QGridLayout>
 #include <QCheckBox>
 #include <QDebug>
+#include <QButtonGroup>
+#include <QRadioButton>
+#include <QGroupBox>
+#include <QVBoxLayout>
 #include "paint.h"
 #include "canvas.h"
 
@@ -30,9 +34,29 @@ Paint::Paint(QWidget *parent)
 	lblPrimModes = new QLabel("Primitive Mode");
 	lblPrimModes->setBuddy(cobPrimModes);
 
-    btnDeleteObj = new QPushButton("&Delete Selected");
-    btnDeleteObj->setDisabled(true);
-    btnChangeCol = new QPushButton("C&hange Color");
+    radioGroup = new QButtonGroup(this);
+    radioGroupBox = new QGroupBox("Selection Tools", this);
+    radioVBox = new QVBoxLayout(this);
+
+    createObj = new QRadioButton("Create Object", this);
+    selectObj = new QRadioButton("Select Object", this);
+    //changeCol = new QRadioButton("Change Color", this);
+    moveObj = new QRadioButton("Move Object", this);
+
+    radioGroup->addButton(createObj, 0);
+    radioGroup->addButton(selectObj, 1);
+    //radioGroup->addButton(changeCol, 2);
+    radioGroup->addButton(moveObj, 2);
+
+    radioVBox->addWidget(createObj);
+    radioVBox->addWidget(selectObj);
+    //radioVBox->addWidget(changeCol);
+    radioVBox->addWidget(moveObj);
+
+    radioGroupBox->setLayout(radioVBox);
+
+    btnSetCol = new QPushButton("Change Color");
+    btnDeleteObj = new QPushButton("Delete Selected");
 
     cbOutline = new QCheckBox("Show Only &Outline", this);
 
@@ -40,12 +64,13 @@ Paint::Paint(QWidget *parent)
 	QGridLayout *mainLayout = new QGridLayout;
 
     mainLayout->addWidget(viewport,       0, 0, 1, 4);
-    mainLayout->addWidget(btnChangeCol,   1, 0);
+    mainLayout->addWidget(btnSetCol,      2, 3);
     mainLayout->addWidget(cbOutline,      1, 1, Qt::AlignLeft);
     mainLayout->addWidget(lblPrimModes,   1, 2, Qt::AlignRight);
     mainLayout->addWidget(cobPrimModes,   1, 3);
-    mainLayout->addWidget(btnDeleteObj,   2, 0);
-    mainLayout->addWidget(btnClearCanvas, 2, 3);
+    mainLayout->addWidget(btnDeleteObj,   2, 1);
+    mainLayout->addWidget(btnClearCanvas, 2, 2);
+    mainLayout->addWidget(radioGroupBox,  1, 0, 2, 1);
 
 	// add layout to this widget instance
 	setLayout(mainLayout);
@@ -57,7 +82,7 @@ Paint::Paint(QWidget *parent)
     connect(btnDeleteObj, SIGNAL(clicked()),
             this, SLOT(deleteBtnPressed()));
     // connect button click event to color chooser handler
-    connect(btnChangeCol, SIGNAL(clicked()),
+    connect(btnSetCol, SIGNAL(clicked()),
             this, SLOT(colorBtnPressed()));
     // connect list view to primitive changed event handler
     connect(cobPrimModes, SIGNAL(activated(int)),
@@ -65,6 +90,9 @@ Paint::Paint(QWidget *parent)
     // connect checkbox to toggle outline event handler
     connect(cbOutline, SIGNAL(toggled(bool)),
             this, SLOT(showOutlineOnly(bool)));
+    // connect RadioButtonGroup
+    connect(radioGroup, SIGNAL(buttonClicked(QAbstractButton*)),
+            this, SLOT(changeInteractionMode()));
 }
 
 /** d'tor */
@@ -75,8 +103,15 @@ Paint::~Paint()
     delete cobPrimModes;
     delete lblPrimModes;
     delete btnDeleteObj;
-    delete btnChangeCol;
+    delete btnSetCol;
     delete cbOutline;
+    delete createObj;
+    delete selectObj;
+    //delete changeCol;
+    delete moveObj;
+    delete radioVBox;
+    delete radioGroupBox;
+    delete radioGroup;
 }
 
 /** method for handling button clicked event */
@@ -108,6 +143,12 @@ void Paint::showOutlineOnly(bool outline)
 {
     qDebug() << "Only show outline: " << outline;
     viewport->setFillMode(!outline);
+}
+
+void Paint::changeInteractionMode()
+{
+    int mode = radioGroup->checkedId();
+    viewport->setInteractionMode(mode);
 }
 
 void Paint::primModeChanged()

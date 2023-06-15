@@ -8,6 +8,10 @@ class QComboBox;
 class QLabel;
 class QCheckBox;
 class Canvas;
+class QButtonGroup;
+class QRadioButton;
+class QGroupBox;
+class QVBoxLayout;
 
 class Paint : public QWidget
 {
@@ -23,15 +27,23 @@ private slots:
     void colorBtnPressed();
 	void primModeChanged();
     void showOutlineOnly(bool);
-
+    void changeInteractionMode();
 private:
 	Canvas *viewport;
+
+    QGroupBox *radioGroupBox;
+    QButtonGroup *radioGroup;
+    QVBoxLayout *radioVBox;
+    QRadioButton *createObj;
+    QRadioButton *selectObj;
+    //QRadioButton *changeCol;
+    QRadioButton *moveObj;
 
 	QPushButton *btnClearCanvas;
 	QComboBox *cobPrimModes;
 	QLabel *lblPrimModes;
     QPushButton *btnDeleteObj;
-    QPushButton *btnChangeCol;
+    QPushButton *btnSetCol;
     QCheckBox *cbOutline;
 };
 
