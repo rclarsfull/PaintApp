@@ -12,6 +12,8 @@ class FreeHandDrawing: public GraphObjekt
     std::vector<QPoint> points;
 public:
     FreeHandDrawing(QPoint origen, QColor color);
+    FreeHandDrawing(const FreeHandDrawing&) = delete;
+    FreeHandDrawing& operator=(const FreeHandDrawing&) = delete;
     ~FreeHandDrawing();
     void draw(QPainter &painter) override;
     void addPoint(QPoint point);

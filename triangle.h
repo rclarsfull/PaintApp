@@ -9,6 +9,8 @@ class Triangle: public GraphObjekt
     QPoint qPoints[2];
 public:
     Triangle(QPoint origen, QColor color);
+    Triangle(const Triangle&) = delete;
+    Triangle& operator=(const Triangle&) = delete;
     ~Triangle();
 
     void setPoint(QPoint qPoint,int point);

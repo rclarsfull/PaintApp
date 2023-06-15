@@ -10,6 +10,8 @@ class Rectangle: public GraphObjekt
     bool filled;
 public:
     Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled);
+    Rectangle(const Rectangle&) = delete;
+    Rectangle& operator=(const Rectangle&) = delete;
     ~Rectangle();
 
     void setPoint(int point);

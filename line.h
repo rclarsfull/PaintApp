@@ -13,6 +13,8 @@ private:
 
 public:
     Line(QPoint beginPoint,QPoint endPoint, QColor color);
+    Line(const Line&) = delete;
+    Line& operator=(const Line&) = delete;
     ~Line();
     QPoint getEndPoint();
     void setEndPoint();
