@@ -12,6 +12,9 @@ public:
 	enum PrimitiveMode {
         NONE, FREE_HAND, CIRCLE, LINE, TRIANGLE, RECTANGLE, POLYGON
 	};
+    enum InteractionMode {
+        CREATE, DELETE, CHANGECOLOR, MOVEOBJ
+    };
 
 	Canvas(QWidget *parent = 0);
 	~Canvas();
