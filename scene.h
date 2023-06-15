@@ -16,7 +16,6 @@ public:
     void addCurentObjektToList();
     void addGraphObjekt(GraphObjekt *graphObjekt);
     void removeGraphobjekt(GraphObjekt *graphObjekt);
-    void removeAllGraphobjects();
     void drawAll(QPainter &painter);
     void clear();
 };
