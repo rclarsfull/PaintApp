@@ -43,6 +43,11 @@ void Canvas::setPrimitiveMode(int mode)
     type = (Canvas::PrimitiveMode)mode;
 }
 
+void Canvas::setInteractionMode(int mode)
+{
+    this->mode = (Canvas::InteractionMode)mode;
+}
+
 void Canvas::setFillMode(bool isFilled)
 {
     fillMode = isFilled;
@@ -135,7 +140,7 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && dragging) {
 		dragging = false;
-        if(!scene.getCurrentObjekt()->equalPoints())
+        if(scene.getCurrentObjekt() != nullptr && !scene.getCurrentObjekt()->equalPoints())
             scene.addCurentObjektToList();
         scene.setCurrentObjekt(nullptr);
 		update();

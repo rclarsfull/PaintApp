@@ -13,7 +13,7 @@ public:
         NONE, FREE_HAND, CIRCLE, LINE, TRIANGLE, RECTANGLE, POLYGON
 	};
     enum InteractionMode {
-        CREATE, DELETE, CHANGECOLOR, MOVEOBJ
+        CREATE, SELECT, MOVEOBJ
     };
 
 	Canvas(QWidget *parent = 0);
@@ -24,6 +24,7 @@ public:
 
 	void clearCanvas(void);
 	void setPrimitiveMode(int mode);
+    void setInteractionMode(int mode);
 
     void setFillMode(bool isFilled);
     void setObjColor(QColor color);
@@ -39,6 +40,7 @@ protected:
 private:
 	bool dragging;
 	PrimitiveMode type;
+    InteractionMode mode;
     QPoint lastMouseClickPos;
     QPoint lastMouseRealesePos;
     Scene scene;
