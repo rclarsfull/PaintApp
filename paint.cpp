@@ -126,8 +126,9 @@ void Paint::clearBtnPressed()
 
 void Paint::deleteBtnPressed()
 {
-    // Implementation requires inside test for all objects for selection
+    viewport->removeSelected();
     qDebug() << "Next action: delete selected item (NYI)";
+    update();
 }
 
 void Paint::colorBtnPressed()

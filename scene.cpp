@@ -51,8 +51,8 @@ void Scene::clear()
 {
     for(unsigned int i = 0; i < graphObjekts.size(); i++){
         if(graphObjekts.at(i) != nullptr){
-           delete graphObjekts[i];
-           graphObjekts[i] = nullptr;
+            delete graphObjekts[i];
+            graphObjekts[i] = nullptr;
         }
     }
     if(currentObjekt != nullptr){
@@ -65,13 +65,13 @@ void Scene::checkforHit(QPoint click)
 {
     for(int i = graphObjekts.size() - 1; i >= 0; i--){
         if(graphObjekts.at(i) != nullptr && graphObjekts.at(i)->hit(click)){
-           if(graphObjekts.at(i)->getSelected()){
-               removeFromSelected(graphObjekts.at(i));
-               break;
-           }else{
-               addToSelected(graphObjekts.at(i));
-               break;
-           }
+            if(graphObjekts.at(i)->getSelected()){
+                removeFromSelected(graphObjekts.at(i));
+                break;
+            }else{
+                addToSelected(graphObjekts.at(i));
+                break;
+            }
         }
     }
 }
@@ -91,6 +91,19 @@ void Scene::removeFromSelected(GraphObjekt *graphobject)
 void Scene::clearSelected()
 {
     selectedObjects.clear();
+}
+
+void Scene::deleteSelected()
+{
+    for (unsigned int i = 0; i < graphObjekts.size(); ++i) {
+        for(std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++){
+            if(graphObjekts.at(i) == *it){
+                delete graphObjekts.at(i);
+                graphObjekts.at(i) = nullptr;
+            }
+        }
+    }
+    clearSelected();
 }
 
 void Scene::recolorSelected(QColor color)

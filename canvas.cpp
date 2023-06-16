@@ -61,6 +61,11 @@ void Canvas::setObjColor(QColor color)
     scene.recolorSelected(color);
 }
 
+void Canvas::removeSelected()
+{
+    scene.deleteSelected();
+}
+
 void Canvas::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);

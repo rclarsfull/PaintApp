@@ -28,6 +28,7 @@ public:
 
     void setFillMode(bool isFilled);
     void setObjColor(QColor color);
+    void removeSelected();
 
 protected:
 	void paintEvent(QPaintEvent *event);
