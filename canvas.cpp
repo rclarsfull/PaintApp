@@ -158,7 +158,6 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
             QPoint moveVec = event->pos() - lastMouseClickPos;
             lastMouseClickPos = event->pos();
             scene.moveObjects(moveVec);
-            update();
             break;
         }
         default:
