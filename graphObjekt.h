@@ -17,6 +17,7 @@ public:
     virtual void update(QPoint newPoint) = 0;
     virtual bool equalPoints() = 0;
     virtual bool hit(QPoint click) = 0;
+    virtual void moveTo(QPoint point) = 0;
     void setSelected(bool b){selected = b;}
     bool getSelected(){return selected;}
     void setColor(QColor color){this->color = color;}

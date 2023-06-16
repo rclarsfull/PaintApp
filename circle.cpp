@@ -72,3 +72,9 @@ bool Circle::hit(QPoint click)
         return (distance + 10 > rad && distance - 10 < rad);
     }
 }
+
+void Circle::moveTo(QPoint point)
+{
+    origin = origin + point;
+    outerPoint = outerPoint + point;
+}

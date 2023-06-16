@@ -75,3 +75,9 @@ bool Rectangle::hit(QPoint click)
     }
 
 }
+
+void Rectangle::moveTo(QPoint point)
+{
+    origin = origin + point;
+    lowerRightCorner = lowerRightCorner + point;
+}

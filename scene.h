@@ -24,6 +24,7 @@ public:
     void clearSelected();
     void deleteSelected();
     void recolorSelected(QColor color);
+    void moveObjects(QPoint point);
 private:
     void addToSelected(GraphObjekt *graphobject);
     void removeFromSelected(GraphObjekt *graphobject);

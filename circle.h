@@ -21,6 +21,7 @@ public:
     void update(QPoint newPoint) override;
     bool equalPoints() override;
     bool hit(QPoint click) override;
+    void moveTo(QPoint point) override;
 };
 
 #endif // CIRCLE_H

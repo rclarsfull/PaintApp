@@ -97,7 +97,7 @@ void Scene::deleteSelected()
 {
     for (unsigned int i = 0; i < graphObjekts.size(); ++i) {
         for(std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++){
-            if(graphObjekts.at(i) == *it){
+            if(graphObjekts.at(i) != nullptr && graphObjekts.at(i) == *it){
                 delete graphObjekts.at(i);
                 graphObjekts.at(i) = nullptr;
             }
@@ -110,5 +110,12 @@ void Scene::recolorSelected(QColor color)
 {
     for (std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++) {
         (*it)->setColor(color);
+    }
+}
+
+void Scene::moveObjects(QPoint point)
+{
+    for (std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++) {
+        (*it)->moveTo(point);
     }
 }

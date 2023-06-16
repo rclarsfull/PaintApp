@@ -45,8 +45,6 @@ void Canvas::setPrimitiveMode(int mode)
 
 void Canvas::setInteractionMode(int mode)
 {
-    if(this->mode == SELECT && mode != SELECT)
-        scene.clearSelected();
     this->mode = (Canvas::InteractionMode)mode;
 }
 
@@ -147,23 +145,26 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
                 dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());
                 break;
             case TRIANGLE:
-
                 break;
             case POLYGON:
-
                 break;
             }
-            update();
             break;
         case SELECT:
 
             break;
         case MOVEOBJ:
-
+        {
+            QPoint moveVec = event->pos() - lastMouseClickPos;
+            lastMouseClickPos = event->pos();
+            scene.moveObjects(moveVec);
+            update();
             break;
+        }
         default:
             break;
         }
+        update();
     }
 }
 

@@ -71,3 +71,9 @@ bool Line::hit(QPoint click)
     //qDebug() << distance;
     return distance < 10;
 }
+
+void Line::moveTo(QPoint point)
+{
+    origin = origin + point;
+    endPoint = endPoint + point;
+}

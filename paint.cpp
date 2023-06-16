@@ -127,7 +127,7 @@ void Paint::clearBtnPressed()
 void Paint::deleteBtnPressed()
 {
     viewport->removeSelected();
-    qDebug() << "Next action: delete selected item (NYI)";
+    //qDebug() << "Next action: delete selected item (NYI)";
     update();
 }
 

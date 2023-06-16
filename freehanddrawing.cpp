@@ -69,3 +69,11 @@ bool FreeHandDrawing::hit(QPoint click)
     }
     return false;
 }
+
+void FreeHandDrawing::moveTo(QPoint point)
+{
+    origin = origin + point;
+    for (unsigned int i = 0; i < points.size(); ++i) {
+        points.at(i) = points.at(i) + point;
+    }
+}
