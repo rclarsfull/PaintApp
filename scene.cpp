@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "scene.h"
 
 Scene::Scene():graphObjekts(),currentObjekt(nullptr)
@@ -60,9 +61,31 @@ void Scene::clear()
     }
 }
 
+void Scene::checkforHit(QPoint click)
+{
+    for(int i = graphObjekts.size() - 1; i >= 0; i--){
+        if(graphObjekts.at(i) != nullptr && graphObjekts.at(i)->hit(click)){
+           if(graphObjekts.at(i)->getSelected()){
+               removeFromSelected(graphObjekts.at(i));
+               break;
+           }else{
+               addToSelected(graphObjekts.at(i));
+               break;
+           }
+        }
+    }
+}
+
 void Scene::addToSelected(GraphObjekt *graphobject)
 {
     selectedObjects.push_back(graphobject);
+    graphobject->setSelected(true);
+}
+
+void Scene::removeFromSelected(GraphObjekt *graphobject)
+{
+    selectedObjects.remove(graphobject);
+    graphobject->setSelected(false);
 }
 
 void Scene::clearSelected()

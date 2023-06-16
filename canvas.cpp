@@ -12,11 +12,11 @@
 Canvas::Canvas(QWidget *parent)
     : QFrame(parent),scene(Scene())
 {
-	setFrameStyle(QFrame::Box);
-	setMouseTracking(true);
+    setFrameStyle(QFrame::Box);
+    setMouseTracking(true);
 
     type = NONE;
-	dragging = false;
+    dragging = false;
 }
 
 Canvas::~Canvas()
@@ -45,6 +45,8 @@ void Canvas::setPrimitiveMode(int mode)
 
 void Canvas::setInteractionMode(int mode)
 {
+    if(this->mode == SELECT && mode != SELECT)
+        scene.clearSelected();
     this->mode = (Canvas::InteractionMode)mode;
 }
 
@@ -68,81 +70,107 @@ void Canvas::paintEvent(QPaintEvent *event)
 
 void Canvas::resizeEvent(QResizeEvent *event) 
 {
-	QFrame::resizeEvent(event);
+    QFrame::resizeEvent(event);
 }
 
 void Canvas::mousePressEvent(QMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton) {
-		dragging = true;
+    if (event->button() == Qt::LeftButton) {
+        dragging = true;
         lastMouseClickPos = event->pos();
 
-        switch(type){
-        case NONE:
-            qDebug() << "Error: no Paint type declared!\n";
+        switch (mode) {
+        case CREATE:
+            switch(type){
+            case NONE:
+                qDebug() << "Error: no Paint type declared!\n";
+                break;
+            case LINE:
+                scene.setCurrentObjekt(new Line(lastMouseClickPos, lastMouseClickPos, color));
+                break;
+            case RECTANGLE:
+                scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+                break;
+            case CIRCLE:
+                scene.setCurrentObjekt(new Circle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+                break;
+            case FREE_HAND:
+                scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
+                break;
+            case TRIANGLE:
+                qDebug() << "Not implemented!\n";
+                break;
+            case POLYGON:
+                qDebug() << "Not implemented!\n";
+                break;
+            }
+            update();
             break;
-        case LINE:
-            scene.setCurrentObjekt(new Line(lastMouseClickPos, lastMouseClickPos, color));
+        case SELECT:
+            scene.checkforHit(lastMouseClickPos);
             break;
-        case RECTANGLE:
-            scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+        case MOVEOBJ:
+
             break;
-        case CIRCLE:
-            scene.setCurrentObjekt(new Circle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
-            break;
-        case FREE_HAND:
-            scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
-            break;
-        case TRIANGLE:
-            qDebug() << "Not implemented!\n";
-            break;
-        case POLYGON:
-            qDebug() << "Not implemented!\n";
+        default:
             break;
         }
 
-        update();
-	}
+
+
+    }
 }
 
 void Canvas::mouseMoveEvent(QMouseEvent *event)
 {
-	if ((event->buttons() & Qt::LeftButton) && dragging) {
+    if ((event->buttons() & Qt::LeftButton) && dragging) {
 
-        switch(type){
-        case NONE:
+        switch (mode) {
+        case CREATE:
+            switch(type){
+            case NONE:
+
+                break;
+            case LINE:
+                scene.getCurrentObjekt()->update(event->pos());
+                break;
+            case RECTANGLE:
+                scene.getCurrentObjekt()->update(event->pos());
+                break;
+            case CIRCLE:
+                scene.getCurrentObjekt()->update(event->pos());
+                break;
+            case FREE_HAND:
+                dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());
+                break;
+            case TRIANGLE:
+
+                break;
+            case POLYGON:
+
+                break;
+            }
+            update();
+            break;
+        case SELECT:
 
             break;
-        case LINE:
-            scene.getCurrentObjekt()->update(event->pos());
-            break;
-        case RECTANGLE:
-            scene.getCurrentObjekt()->update(event->pos());
-            break;
-        case CIRCLE:
-            scene.getCurrentObjekt()->update(event->pos());
-            break;
-        case FREE_HAND:
-            dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());
-            break;
-        case TRIANGLE:
+        case MOVEOBJ:
 
             break;
-        case POLYGON:
-
+        default:
             break;
         }
-        update();
     }
 }
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton && dragging) {
-		dragging = false;
+    if (event->button() == Qt::LeftButton && dragging) {
+        dragging = false;
         if(scene.getCurrentObjekt() != nullptr && !scene.getCurrentObjekt()->equalPoints())
             scene.addCurentObjektToList();
         scene.setCurrentObjekt(nullptr);
-		update();
-	}
+        update();
+    }
 }

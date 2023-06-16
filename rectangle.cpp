@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "rectangle.h"
 
 Rectangle::Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled):GraphObjekt(origen,color), lowerRightCorner(lowerRightCorner), filled(filled)
@@ -40,6 +41,10 @@ void Rectangle::draw(QPainter &painter)
     int height = lowerRightCorner.y() - origin.y();
     painter.drawRect(origin.x(), origin.y(), width, height);
     painter.setBrush(QBrush(color, Qt::NoBrush));
+    if(selected){
+        painter.setPen(QPen(QColor("red"),5, Qt::DashLine));
+        painter.drawRect(origin.x(), origin.y(), width, height);
+    }
 }
 
 void Rectangle::deleteWhenConnected(QPoint selected)
@@ -54,5 +59,19 @@ void Rectangle::update(QPoint newPoint)
 
 bool Rectangle::equalPoints()
 {
+
+}
+
+bool Rectangle::hit(QPoint click)
+{
+    bool xIn = xIn = (click.x() < origin.x() && click.x() > lowerRightCorner.x()) || (click.x() > origin.x() && click.x() < lowerRightCorner.x());
+    bool yIn = yIn = (click.y() < origin.y() && click.y() > lowerRightCorner.y()) || (click.y() > origin.y() && click.y() < lowerRightCorner.y());
+    if(filled){
+        return xIn && yIn;
+    }else{
+        bool onX = (click.x() + 10 > origin.x() && click.x() - 10 < origin.x()) || (click.x() + 10 > lowerRightCorner.x() && click.x() - 10 < lowerRightCorner.x());
+        bool onY = (click.y() + 10 > origin.y() && click.y() - 10 < origin.y()) || (click.y() + 10 > lowerRightCorner.y() && click.y() - 10 < lowerRightCorner.y());
+        return (xIn && onY) || (yIn && onX);
+    }
 
 }

@@ -22,6 +22,7 @@ public:
     void deleteWhenConnected(QPoint selected) override;
     void update(QPoint newPoint) override;
     bool equalPoints() override;
+    bool hit(QPoint click) override;
 };
 
 #endif // RECTANGLE_H
