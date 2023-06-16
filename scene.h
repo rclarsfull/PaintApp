@@ -22,6 +22,7 @@ public:
 
     void checkforHit(QPoint click);
     void clearSelected();
+    void recolorSelected(QColor color);
 private:
     void addToSelected(GraphObjekt *graphobject);
     void removeFromSelected(GraphObjekt *graphobject);

@@ -92,3 +92,10 @@ void Scene::clearSelected()
 {
     selectedObjects.clear();
 }
+
+void Scene::recolorSelected(QColor color)
+{
+    for (std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++) {
+        (*it)->setColor(color);
+    }
+}

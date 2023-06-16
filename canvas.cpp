@@ -58,6 +58,7 @@ void Canvas::setFillMode(bool isFilled)
 void Canvas::setObjColor(QColor color)
 {
     this->color = color;
+    scene.recolorSelected(color);
 }
 
 void Canvas::paintEvent(QPaintEvent *event)
@@ -115,9 +116,6 @@ void Canvas::mousePressEvent(QMouseEvent *event)
         default:
             break;
         }
-
-
-
     }
 }
 

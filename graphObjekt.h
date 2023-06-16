@@ -19,6 +19,7 @@ public:
     virtual bool hit(QPoint click) = 0;
     void setSelected(bool b){selected = b;}
     bool getSelected(){return selected;}
+    void setColor(QColor color){this->color = color;}
 protected:
     QPoint origin;
     QColor color;
