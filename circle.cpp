@@ -67,9 +67,9 @@ bool Circle::hit(QPoint click)
     int distance = std::sqrt(clickVec.x()*clickVec.x() + clickVec.y()*clickVec.y());
 
     if(filled){
-        return distance <= rad ? true : false;
+        return distance <= rad;
     }else{
-        return (distance + 10 > rad && distance - 10 < rad);
+        return (distance < rad + 10 && distance > rad - 10);
     }
 }
 
