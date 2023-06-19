@@ -69,8 +69,8 @@ bool Rectangle::hit(QPoint click)
     if(filled){
         return xIn && yIn;
     }else{
-        bool onX = (click.x() + 10 > origin.x() && click.x() - 10 < origin.x()) || (click.x() + 10 > lowerRightCorner.x() && click.x() - 10 < lowerRightCorner.x());
-        bool onY = (click.y() + 10 > origin.y() && click.y() - 10 < origin.y()) || (click.y() + 10 > lowerRightCorner.y() && click.y() - 10 < lowerRightCorner.y());
+        bool onX = (click.x() < origin.x() + 10 && click.x() > origin.x() - 10) || (click.x() < lowerRightCorner.x() + 10 && click.x() > lowerRightCorner.x() - 10);
+        bool onY = (click.y() < origin.y() + 10 && click.y() > origin.y() - 10) || (click.y() < lowerRightCorner.y() + 10 && click.y() > lowerRightCorner.y() - 10);
         return (xIn && onY) || (yIn && onX);
     }
 
