@@ -90,6 +90,9 @@ void Scene::removeFromSelected(GraphObjekt *graphobject)
 
 void Scene::clearSelected()
 {
+    for (std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); ++it) {
+        (*it)->setSelected(false);
+    }
     selectedObjects.clear();
 }
 

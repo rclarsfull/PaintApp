@@ -55,6 +55,8 @@ Paint::Paint(QWidget *parent)
 
     radioGroupBox->setLayout(radioVBox);
 
+    unselect = new QPushButton("Unselect All");
+
     btnSetCol = new QPushButton("Change Color");
     btnDeleteObj = new QPushButton("Delete Selected");
 
@@ -70,7 +72,8 @@ Paint::Paint(QWidget *parent)
     mainLayout->addWidget(cobPrimModes,   1, 3);
     mainLayout->addWidget(btnDeleteObj,   2, 1);
     mainLayout->addWidget(btnClearCanvas, 2, 2);
-    mainLayout->addWidget(radioGroupBox,  1, 0, 2, 1);
+    mainLayout->addWidget(radioGroupBox,  1, 0, 3, 1);
+    mainLayout->addWidget(unselect,       3, 1);
 
 	// add layout to this widget instance
 	setLayout(mainLayout);
@@ -93,6 +96,8 @@ Paint::Paint(QWidget *parent)
     // connect RadioButtonGroup
     connect(radioGroup, SIGNAL(buttonClicked(QAbstractButton*)),
             this, SLOT(changeInteractionMode()));
+    connect(unselect, SIGNAL(clicked()),
+            this, SLOT(unselectAll()));
 }
 
 /** d'tor */
@@ -150,6 +155,12 @@ void Paint::changeInteractionMode()
 {
     int mode = radioGroup->checkedId();
     viewport->setInteractionMode(mode);
+}
+
+void Paint::unselectAll()
+{
+    viewport->unselectAll();
+    update();
 }
 
 void Paint::primModeChanged()

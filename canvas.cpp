@@ -64,6 +64,11 @@ void Canvas::removeSelected()
     scene.deleteSelected();
 }
 
+void Canvas::unselectAll()
+{
+    scene.clearSelected();
+}
+
 void Canvas::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);

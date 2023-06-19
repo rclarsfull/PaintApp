@@ -28,6 +28,7 @@ private slots:
 	void primModeChanged();
     void showOutlineOnly(bool);
     void changeInteractionMode();
+    void unselectAll();
 private:
 	Canvas *viewport;
 
@@ -38,6 +39,7 @@ private:
     QRadioButton *selectObj;
     //QRadioButton *changeCol;
     QRadioButton *moveObj;
+    QPushButton *unselect;
 
 	QPushButton *btnClearCanvas;
 	QComboBox *cobPrimModes;
