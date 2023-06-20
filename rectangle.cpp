@@ -64,8 +64,8 @@ bool Rectangle::equalPoints()
 
 bool Rectangle::hit(QPoint click)
 {
-    bool xIn = xIn = (click.x() < origin.x() && click.x() > lowerRightCorner.x()) || (click.x() > origin.x() && click.x() < lowerRightCorner.x());
-    bool yIn = yIn = (click.y() < origin.y() && click.y() > lowerRightCorner.y()) || (click.y() > origin.y() && click.y() < lowerRightCorner.y());
+    bool xIn = (click.x() < origin.x() && click.x() > lowerRightCorner.x()) || (click.x() > origin.x() && click.x() < lowerRightCorner.x());
+    bool yIn = (click.y() < origin.y() && click.y() > lowerRightCorner.y()) || (click.y() > origin.y() && click.y() < lowerRightCorner.y());
     if(filled){
         return xIn && yIn;
     }else{
@@ -73,7 +73,6 @@ bool Rectangle::hit(QPoint click)
         bool onY = (click.y() < origin.y() + 10 && click.y() > origin.y() - 10) || (click.y() < lowerRightCorner.y() + 10 && click.y() > lowerRightCorner.y() - 10);
         return (xIn && onY) || (yIn && onX);
     }
-
 }
 
 void Rectangle::moveTo(QPoint point)
