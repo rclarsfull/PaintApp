@@ -69,7 +69,7 @@ bool Line::hit(QPoint click)
     QPoint v = intersect - click;
     float distance = sqrt(v.x() * v.x() + v.y() * v.y());
     //qDebug() << distance;
-    return distance < 10;
+    return (distance < 10) && (0 <= t && t <= 1);
 }
 
 void Line::moveTo(QPoint point)
