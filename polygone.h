@@ -5,6 +5,7 @@
 
 class Polygone: public GraphObjekt
 {
+
 public:
     Polygone(QPoint origen, QColor color);
     Polygone(const Polygone&) = delete;

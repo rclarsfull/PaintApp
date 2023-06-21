@@ -39,9 +39,8 @@ void Scene::addGraphObjekt(GraphObjekt *graphObjekt)
 void Scene::drawAll(QPainter &painter)
 {
 
-    for(unsigned int i = 0;i < graphObjekts.size();i++){
-        if(graphObjekts.at(i) != nullptr)
-            graphObjekts[i]->draw(painter);
+    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin();it != graphObjekts.end();it++){
+        (*it)->draw(painter);
     }
     if(currentObjekt != nullptr)
         currentObjekt->draw(painter);
@@ -49,10 +48,11 @@ void Scene::drawAll(QPainter &painter)
 
 void Scene::clear()
 {
-    for(unsigned int i = 0; i < graphObjekts.size(); i++){
-        if(graphObjekts.at(i) != nullptr){
-            delete graphObjekts[i];
-            graphObjekts[i] = nullptr;
+    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++){
+        if(*it != nullptr){
+            GraphObjekt* tmp = *it;
+            graphObjekts.remove(tmp);
+            delete tmp;
         }
     }
     if(currentObjekt != nullptr){
@@ -63,13 +63,13 @@ void Scene::clear()
 
 void Scene::checkforHit(QPoint click)
 {
-    for(int i = graphObjekts.size() - 1; i >= 0; i--){
-        if(graphObjekts.at(i) != nullptr && graphObjekts.at(i)->hit(click)){
-            if(graphObjekts.at(i)->getSelected()){
-                removeFromSelected(graphObjekts.at(i));
+    for(std::list<GraphObjekt*>::reverse_iterator it = graphObjekts.rbegin();it != graphObjekts.rend(); it++){
+        if(*it != nullptr && (*it)->hit(click)){
+            if((*it)->getSelected()){
+                removeFromSelected(*it);
                 break;
             }else{
-                addToSelected(graphObjekts.at(i));
+                addToSelected(*it);
                 break;
             }
         }
@@ -98,11 +98,13 @@ void Scene::clearSelected()
 
 void Scene::deleteSelected()
 {
-    for (unsigned int i = 0; i < graphObjekts.size(); ++i) {
+    for (std::list<GraphObjekt*>::iterator yt = graphObjekts.begin(); yt != graphObjekts.end(); yt++) {
         for(std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++){
-            if(graphObjekts.at(i) != nullptr && graphObjekts.at(i) == *it){
-                delete graphObjekts.at(i);
-                graphObjekts.at(i) = nullptr;
+            if(*yt == *it){
+                GraphObjekt* tmp = *yt;
+                yt = graphObjekts.erase(yt);
+                delete tmp;
+               // --yt;
             }
         }
     }
