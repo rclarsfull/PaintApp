@@ -1,15 +1,9 @@
 #include <QDebug>
 #include "freehanddrawing.h"
 
-FreeHandDrawing::FreeHandDrawing(QPoint origen, QColor color):GraphObjekt(origen,color)
-{
+FreeHandDrawing::FreeHandDrawing(QPoint origen, QColor color):GraphObjekt(origen,color){}
 
-}
-
-FreeHandDrawing::~FreeHandDrawing()
-{
-
-}
+FreeHandDrawing::~FreeHandDrawing(){}
 
 void FreeHandDrawing::draw(QPainter &painter)
 {
@@ -32,25 +26,7 @@ void FreeHandDrawing::addPoint(QPoint point)
     points.push_back(point);
 }
 
-void FreeHandDrawing::setOrigin(QPoint point)
-{
-
-}
-
-QPoint FreeHandDrawing::getOrigin()
-{
-
-}
-
-void FreeHandDrawing::deleteWhenConnected(QPoint selected)
-{
-
-}
-
-void FreeHandDrawing::update(QPoint newPoint)
-{
-
-}
+void FreeHandDrawing::update(QPoint newPoint){}
 
 bool FreeHandDrawing::equalPoints()
 {

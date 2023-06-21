@@ -12,15 +12,9 @@ public:
     Triangle(const Triangle&) = delete;
     Triangle& operator=(const Triangle&) = delete;
     ~Triangle();
-
-    void setPoint(QPoint qPoint,int point);
-    QPoint getPoint(int point);
-    void setOrigin(QPoint point) override;
-    QPoint getOrigin() override;
     void draw(QPainter &painter) override;
-    void deleteWhenConnected(QPoint selected) override;
     bool equalPoints() override;
-    //void moveTo(QPoint newPoint) override;
+    void moveTo(QPoint newPoint) override;
 };
 
 #endif // TRIANGLE_H

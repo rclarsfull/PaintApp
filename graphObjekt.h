@@ -10,10 +10,7 @@ public:
     GraphObjekt(const GraphObjekt&) = delete;
     GraphObjekt& operator=(const GraphObjekt&) = delete;
     virtual ~GraphObjekt(){};
-    virtual QPoint getOrigin() = 0;
-    virtual void setOrigin(QPoint point) = 0;
     virtual void draw(QPainter &painter) = 0;
-    virtual void deleteWhenConnected(QPoint selected) = 0;
     virtual void update(QPoint newPoint) = 0;
     virtual bool equalPoints() = 0;
     virtual bool hit(QPoint click) = 0;

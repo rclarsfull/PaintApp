@@ -16,12 +16,7 @@ public:
     Line(const Line&) = delete;
     Line& operator=(const Line&) = delete;
     ~Line();
-    QPoint getEndPoint();
-    void setEndPoint();
-    void setOrigin(QPoint point) override;
-    QPoint getOrigin() override;
     void draw(QPainter &painter) override;
-    void deleteWhenConnected(QPoint selected) override;
     void update(QPoint newPoint) override;
     bool equalPoints() override;
     bool hit(QPoint click) override;
