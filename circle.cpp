@@ -4,25 +4,9 @@
 #include "circle.h"
 
 
-Circle::Circle(QPoint origen, QPoint outerPoint, QColor color, bool filled):GraphObjekt(origen,color), outerPoint(outerPoint), filled(filled)
-{
+Circle::Circle(QPoint origen, QPoint outerPoint, QColor color, bool filled):GraphObjekt(origen,color), outerPoint(outerPoint), filled(filled){}
 
-}
-
-Circle::~Circle()
-{
-
-}
-
-void Circle::setOrigin(QPoint point)
-{
-
-}
-
-QPoint Circle::getOrigin()
-{
-
-}
+Circle::~Circle(){}
 
 void Circle::draw(QPainter &painter)
 {
@@ -39,11 +23,6 @@ void Circle::draw(QPainter &painter)
         painter.setPen(QPen(QColor("red"),5, Qt::DashLine));
         painter.drawEllipse(origin, distance, distance);
     }
-}
-
-void Circle::deleteWhenConnected(QPoint selected)
-{
-
 }
 
 void Circle::update(QPoint newPoint)

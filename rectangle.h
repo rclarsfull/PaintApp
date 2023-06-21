@@ -13,13 +13,7 @@ public:
     Rectangle(const Rectangle&) = delete;
     Rectangle& operator=(const Rectangle&) = delete;
     ~Rectangle();
-
-    void setPoint(int point);
-    QPoint getPoint(int point);
-    void setOrigin(QPoint point) override;
-    QPoint getOrigin() override;
     void draw(QPainter &painter) override;
-    void deleteWhenConnected(QPoint selected) override;
     void update(QPoint newPoint) override;
     bool equalPoints() override;
     bool hit(QPoint click) override;

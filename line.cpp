@@ -2,35 +2,9 @@
 #include <QDebug>
 #include "line.h"
 
-Line::Line(QPoint a_beginPoint,QPoint a_endPoint, QColor color):GraphObjekt(a_beginPoint, color), endPoint(a_endPoint)
-{
+Line::Line(QPoint a_beginPoint,QPoint a_endPoint, QColor color):GraphObjekt(a_beginPoint, color), endPoint(a_endPoint){}
 
-}
-
-Line::~Line()
-{
-
-}
-
-QPoint Line::getEndPoint()
-{
-
-}
-
-void Line::setEndPoint()
-{
-
-}
-
-void Line::setOrigin(QPoint point)
-{
-
-}
-
-QPoint Line::getOrigin()
-{
-
-}
+Line::~Line(){}
 
 void Line::draw(QPainter &painter)
 {
@@ -41,11 +15,6 @@ void Line::draw(QPainter &painter)
         painter.drawEllipse(origin, 5, 5);
         painter.drawEllipse(endPoint, 5, 5);
     }
-}
-
-void Line::deleteWhenConnected(QPoint selected)
-{
-
 }
 
 void Line::update(QPoint newPoint)

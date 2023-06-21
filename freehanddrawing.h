@@ -17,9 +17,6 @@ public:
     ~FreeHandDrawing();
     void draw(QPainter &painter) override;
     void addPoint(QPoint point);
-    void setOrigin(QPoint point) override;
-    QPoint getOrigin() override;
-    void deleteWhenConnected(QPoint selected) override;
     void update(QPoint newPoint) override;
     bool equalPoints() override;
     bool hit(QPoint click) override;

@@ -1,35 +1,9 @@
 #include <QDebug>
 #include "rectangle.h"
 
-Rectangle::Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled):GraphObjekt(origen,color), lowerRightCorner(lowerRightCorner), filled(filled)
-{
+Rectangle::Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled):GraphObjekt(origen,color), lowerRightCorner(lowerRightCorner), filled(filled){}
 
-}
-
-Rectangle::~Rectangle()
-{
-
-}
-
-void Rectangle::setPoint(int point)
-{
-
-}
-
-QPoint Rectangle::getPoint(int point)
-{
-
-}
-
-void Rectangle::setOrigin(QPoint point)
-{
-
-}
-
-QPoint Rectangle::getOrigin()
-{
-
-}
+Rectangle::~Rectangle(){}
 
 void Rectangle::draw(QPainter &painter)
 {
@@ -47,11 +21,6 @@ void Rectangle::draw(QPainter &painter)
     }
 }
 
-void Rectangle::deleteWhenConnected(QPoint selected)
-{
-
-}
-
 void Rectangle::update(QPoint newPoint)
 {
     lowerRightCorner = newPoint;
@@ -59,7 +28,7 @@ void Rectangle::update(QPoint newPoint)
 
 bool Rectangle::equalPoints()
 {
-
+    return(origin == lowerRightCorner);
 }
 
 bool Rectangle::hit(QPoint click)
