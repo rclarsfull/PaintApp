@@ -54,6 +54,7 @@ Paint::Paint(QWidget *parent)
     radioVBox->addWidget(moveObj);
 
     radioGroupBox->setLayout(radioVBox);
+    createObj->click();
 
     unselect = new QPushButton("Unselect All");
 
