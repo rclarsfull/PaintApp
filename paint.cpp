@@ -155,6 +155,8 @@ void Paint::showOutlineOnly(bool outline)
 {
     qDebug() << "Only show outline: " << outline;
     viewport->setFillMode(!outline);
+    viewport->getScene()->setFillForSelected(!outline);
+    update();
 }
 
 void Paint::changeInteractionMode()

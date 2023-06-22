@@ -8,7 +8,7 @@ class Circle: public GraphObjekt
 {
 private:
     QPoint outerPoint;
-    bool filled;
+    //bool filled;
 public:
     Circle(QPoint origen, QPoint outerPoint, QColor color, bool filled);
     Circle(const Circle&) = delete;

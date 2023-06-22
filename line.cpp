@@ -2,7 +2,7 @@
 #include <QDebug>
 #include "line.h"
 
-Line::Line(QPoint a_beginPoint,QPoint a_endPoint, QColor color):GraphObjekt(a_beginPoint, color), endPoint(a_endPoint){}
+Line::Line(QPoint a_beginPoint,QPoint a_endPoint, QColor color):GraphObjekt(a_beginPoint, color, false), endPoint(a_endPoint){}
 
 Line::~Line(){}
 

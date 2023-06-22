@@ -1,7 +1,7 @@
 #include <QDebug>
 #include "rectangle.h"
 
-Rectangle::Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled):GraphObjekt(origen,color), lowerRightCorner(lowerRightCorner), filled(filled){}
+Rectangle::Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled):GraphObjekt(origen,color, filled), lowerRightCorner(lowerRightCorner){}
 
 Rectangle::~Rectangle(){}
 

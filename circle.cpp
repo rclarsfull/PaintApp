@@ -4,7 +4,7 @@
 #include "circle.h"
 
 
-Circle::Circle(QPoint origen, QPoint outerPoint, QColor color, bool filled):GraphObjekt(origen,color), outerPoint(outerPoint), filled(filled){}
+Circle::Circle(QPoint origen, QPoint outerPoint, QColor color, bool filled):GraphObjekt(origen,color, filled), outerPoint(outerPoint){}
 
 Circle::~Circle(){}
 

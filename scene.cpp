@@ -134,3 +134,12 @@ void Scene::moveObjects(QPoint point)
         }
     }
 }
+
+void Scene::setFillForSelected(bool fill)
+{
+    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
+        if((*it)->getSelected()){
+            (*it)->setFilled(fill);
+        }
+    }
+}

@@ -6,7 +6,7 @@
 class GraphObjekt{
 
 public:
-    GraphObjekt(QPoint point, QColor color):origin(point),color(color),selected(false){};
+    GraphObjekt(QPoint point, QColor color, bool filled):origin(point), color(color), selected(false),filled(filled){};
     GraphObjekt(const GraphObjekt&) = delete;
     GraphObjekt& operator=(const GraphObjekt&) = delete;
     virtual ~GraphObjekt(){};
@@ -18,10 +18,13 @@ public:
     void setSelected(bool b){selected = b;}
     bool getSelected(){return selected;}
     void setColor(QColor color){this->color = color;}
+    bool getFilled(){return filled;}
+    void setFilled(bool filled){this->filled = filled;}
 protected:
     QPoint origin;
     QColor color;
     bool selected;
+    bool filled;
 };
 
 #endif // GRAPHOBJEKT_H

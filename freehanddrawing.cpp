@@ -1,7 +1,7 @@
 #include <QDebug>
 #include "freehanddrawing.h"
 
-FreeHandDrawing::FreeHandDrawing(QPoint origen, QColor color):GraphObjekt(origen,color){}
+FreeHandDrawing::FreeHandDrawing(QPoint origen, QColor color):GraphObjekt(origen,color, false){}
 
 FreeHandDrawing::~FreeHandDrawing(){}
 

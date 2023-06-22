@@ -7,7 +7,7 @@
 class Rectangle: public GraphObjekt
 {
     QPoint lowerRightCorner;
-    bool filled;
+    //bool filled;
 public:
     Rectangle(QPoint origen, QPoint lowerRightCorner, QColor color, bool filled);
     Rectangle(const Rectangle&) = delete;
