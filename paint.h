@@ -29,6 +29,7 @@ private slots:
     void showOutlineOnly(bool);
     void changeInteractionMode();
     void unselectAll();
+    void duplicateBtnClicked();
 private:
 	Canvas *viewport;
 
@@ -40,6 +41,7 @@ private:
     //QRadioButton *changeCol;
     QRadioButton *moveObj;
     QPushButton *unselect;
+    QPushButton *duplicateBtn;
 
 	QPushButton *btnClearCanvas;
 	QComboBox *cobPrimModes;

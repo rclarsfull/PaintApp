@@ -69,6 +69,11 @@ void Canvas::unselectAll()
     scene.clearSelected();
 }
 
+Scene *Canvas::getScene()
+{
+    return &scene;
+}
+
 void Canvas::paintEvent(QPaintEvent *event)
 {
     QFrame::paintEvent(event);

@@ -57,6 +57,7 @@ Paint::Paint(QWidget *parent)
     createObj->click();
 
     unselect = new QPushButton("Unselect All");
+    duplicateBtn = new QPushButton("Duplicate Selected");
 
     btnSetCol = new QPushButton("Change Color");
     btnDeleteObj = new QPushButton("Delete Selected");
@@ -75,6 +76,7 @@ Paint::Paint(QWidget *parent)
     mainLayout->addWidget(btnClearCanvas, 2, 2);
     mainLayout->addWidget(radioGroupBox,  1, 0, 3, 1);
     mainLayout->addWidget(unselect,       3, 1);
+    mainLayout->addWidget(duplicateBtn,   3, 2);
 
 	// add layout to this widget instance
 	setLayout(mainLayout);
@@ -99,6 +101,8 @@ Paint::Paint(QWidget *parent)
             this, SLOT(changeInteractionMode()));
     connect(unselect, SIGNAL(clicked()),
             this, SLOT(unselectAll()));
+    connect(duplicateBtn, SIGNAL(clicked()),
+            this, SLOT(duplicateBtnClicked()));
 }
 
 /** d'tor */
@@ -118,6 +122,7 @@ Paint::~Paint()
     delete radioVBox;
     delete radioGroupBox;
     delete radioGroup;
+    delete duplicateBtn;
 }
 
 /** method for handling button clicked event */
@@ -162,6 +167,11 @@ void Paint::unselectAll()
 {
     viewport->unselectAll();
     update();
+}
+
+void Paint::duplicateBtnClicked()
+{
+
 }
 
 void Paint::primModeChanged()

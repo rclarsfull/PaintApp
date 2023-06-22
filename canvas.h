@@ -30,6 +30,7 @@ public:
     void setObjColor(QColor color);
     void removeSelected();
     void unselectAll();
+    Scene* getScene();
 
 protected:
 	void paintEvent(QPaintEvent *event);

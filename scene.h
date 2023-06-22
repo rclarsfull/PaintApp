@@ -9,7 +9,7 @@ class Scene
 {
     std::list<GraphObjekt*> graphObjekts;
     GraphObjekt *currentObjekt;
-    std::list<GraphObjekt*> selectedObjects;
+    //std::list<GraphObjekt*> selectedObjects;
 public:
     Scene();
     ~Scene();
