@@ -48,12 +48,10 @@ void Scene::drawAll(QPainter &painter)
 
 void Scene::clear()
 {
-    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++){
-        if(*it != nullptr){
-            GraphObjekt* tmp = *it;
-            graphObjekts.remove(tmp);
-            delete tmp;
-        }
+    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); ){
+        GraphObjekt* tmp = *it;
+        it = graphObjekts.erase(it);
+        delete tmp;
     }
     if(currentObjekt != nullptr){
         delete currentObjekt;
