@@ -96,7 +96,7 @@ void Scene::clearSelected()
 
 void Scene::deleteSelected()
 {
-    for (std::list<GraphObjekt*>::iterator yt = graphObjekts.begin(); yt != graphObjekts.end(); yt++) {
+    for (std::list<GraphObjekt*>::iterator yt = graphObjekts.begin(); yt != graphObjekts.end(); ) {
         for(std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++){
             if(*yt == *it){
                 GraphObjekt* tmp = *yt;
