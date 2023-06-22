@@ -128,7 +128,7 @@ Paint::~Paint()
 /** method for handling button clicked event */
 void Paint::clearBtnPressed()
 {
-    viewport->clearCanvas();
+    viewport->getScene()->clear();
 
 	// force redraw
 	update();
@@ -137,7 +137,7 @@ void Paint::clearBtnPressed()
 
 void Paint::deleteBtnPressed()
 {
-    viewport->removeSelected();
+    viewport->getScene()->deleteSelected();
     //qDebug() << "Next action: delete selected item (NYI)";
     update();
 }
@@ -165,7 +165,7 @@ void Paint::changeInteractionMode()
 
 void Paint::unselectAll()
 {
-    viewport->unselectAll();
+    viewport->getScene()->clearSelected();
     update();
 }
 

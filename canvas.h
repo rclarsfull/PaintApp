@@ -22,14 +22,14 @@ public:
 	QSize minimumSizeHint() const;
 	QSize sizeHint() const;
 
-	void clearCanvas(void);
+    //void clearCanvas(void);
 	void setPrimitiveMode(int mode);
     void setInteractionMode(int mode);
 
     void setFillMode(bool isFilled);
     void setObjColor(QColor color);
-    void removeSelected();
-    void unselectAll();
+    //void removeSelected();
+    //void unselectAll();
     Scene* getScene();
 
 protected:
