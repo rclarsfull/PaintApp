@@ -100,11 +100,11 @@ void Scene::clearSelected()
 
 void Scene::deleteSelected()
 {
-    for (std::list<GraphObjekt*>::iterator yt = graphObjekts.begin(); yt != graphObjekts.end(); yt++) {
-        if((*yt)->getSelected()){
-            yt = graphObjekts.erase(yt);
-            yt--;
-        }
+    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();) {
+        if((*it)->getSelected()){
+            it = graphObjekts.erase(it);
+        }else
+            it++;
 //        for(std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++){
 //            if(*yt == *it){
 //                GraphObjekt* tmp = *yt;
@@ -119,7 +119,7 @@ void Scene::deleteSelected()
 
 void Scene::recolorSelected(QColor color)
 {
-    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
+    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();it++) {
         if((*it)->getSelected()){
             (*it)->setColor(color);
         }
