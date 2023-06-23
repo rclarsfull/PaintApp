@@ -25,7 +25,12 @@ void FreeHandDrawing::draw(QPainter &painter)
 
 void FreeHandDrawing::addPoint(QPoint point)
 {
-    points.push_back(point);
+    if(points.size()>1){
+        QPoint vec = points.back() - point;
+            if((vec.x()*vec.x() + vec.y()*vec.y() > 25))
+            points.push_back(point);
+    }else
+        points.push_back(point);
 }
 
 bool FreeHandDrawing::equalPoints()
