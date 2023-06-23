@@ -7,6 +7,7 @@
 #include "graphObjekt.h"
 #include "line.h"
 #include "circle.h"
+#include "polygone.h"
 #include "rectangle.h"
 
 Canvas::Canvas(QWidget *parent)
@@ -116,7 +117,10 @@ void Canvas::mousePressEvent(QMouseEvent *event)
                 qDebug() << "Not implemented!\n";
                 break;
             case POLYGON:
-                qDebug() << "Not implemented!\n";
+                if(scene.getCurrentObjekt() == nullptr)
+                    scene.setCurrentObjekt(new Polygone(lastMouseClickPos,color));
+                else
+                    dynamic_cast<Polygone*>(scene.getCurrentObjekt())->addPoint(lastMouseClickPos);
                 break;
             }
             update();
@@ -182,9 +186,11 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && dragging) {
         dragging = false;
-        if(scene.getCurrentObjekt() != nullptr && !scene.getCurrentObjekt()->equalPoints())
-            scene.addCurentObjektToList();
-        scene.setCurrentObjekt(nullptr);
+        if(scene.getCurrentObjekt() != nullptr && scene.getCurrentObjekt()->isValid()){
+            if(!scene.getCurrentObjekt()->equalPoints())
+              scene.addCurentObjektToList();
+            scene.setCurrentObjekt(nullptr);
+        }
         update();
     }
 }

@@ -17,6 +17,7 @@ public:
     virtual void moveTo(QPoint point) = 0;
     virtual GraphObjekt* copy() = 0;
     virtual void calcBBox(QPoint &min, QPoint &max) = 0;
+    virtual bool isValid() {return true;};
     void setSelected(bool b){selected = b;}
     bool getSelected(){return selected;}
     void setColor(QColor color){this->color = color;}
