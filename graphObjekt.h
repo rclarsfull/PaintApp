@@ -11,7 +11,7 @@ public:
     GraphObjekt& operator=(const GraphObjekt&) = delete;
     virtual ~GraphObjekt(){};
     virtual void draw(QPainter &painter) = 0;
-    virtual void update(QPoint newPoint) = 0;
+    virtual void update(QPoint newPoint){};
     virtual bool equalPoints() = 0;
     virtual bool hit(QPoint click) = 0;
     virtual void moveTo(QPoint point) = 0;

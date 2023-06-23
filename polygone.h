@@ -13,7 +13,6 @@ public:
     Polygone& operator=(const Polygone&) = delete;
     ~Polygone();
     void draw(QPainter &painter) override;
-    void update(QPoint newPoint) override;
     bool equalPoints() override;
     bool hit(QPoint click) override;
     void calcBBox(QPoint &min, QPoint &max) override;

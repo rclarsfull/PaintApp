@@ -9,9 +9,9 @@ void Polygone::draw(QPainter &painter)
     if(!valid){
         painter.setPen(QPen(Qt::red,2,Qt::SolidLine));
         painter.setBrush(QBrush(Qt::SolidPattern));
-        painter.drawEllipse(origin,5,5);
+        painter.drawEllipse(origin,4,4);
         for(unsigned int i = 0; i < points.size();i++){
-            painter.drawEllipse(points[i],5,5);
+            painter.drawEllipse(points[i],4,4);
         }
     }
 
@@ -28,11 +28,6 @@ void Polygone::draw(QPainter &painter)
             painter.drawLine(points.back(), origin);
         painter.setBrush(QBrush(color, Qt::NoBrush));
     }
-}
-
-void Polygone::update(QPoint newPoint)
-{
-
 }
 
 bool Polygone::equalPoints()

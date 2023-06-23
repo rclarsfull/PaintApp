@@ -28,8 +28,6 @@ void FreeHandDrawing::addPoint(QPoint point)
     points.push_back(point);
 }
 
-void FreeHandDrawing::update(QPoint newPoint){}
-
 bool FreeHandDrawing::equalPoints()
 {
     if(points.size() > 2)
