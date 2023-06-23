@@ -14,7 +14,6 @@ public:
     Polygone& operator=(const Polygone&) = delete;
     ~Polygone();
     void draw(QPainter &painter) override;
-    bool equalPoints() override;
     bool hit(QPoint click) override;
     void calcBBox(QPoint &min, QPoint &max) override;
     GraphObjekt* copy() override;

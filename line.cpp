@@ -22,7 +22,7 @@ void Line::update(QPoint newPoint)
     endPoint = newPoint;
 }
 
-bool Line::equalPoints()
+bool Line::isNoSizeObjekt()
 {
     if(origin.x() == endPoint.x() && origin.y() == endPoint.y())
         return true;

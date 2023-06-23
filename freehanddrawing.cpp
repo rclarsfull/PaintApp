@@ -33,7 +33,7 @@ void FreeHandDrawing::addPoint(QPoint point)
         points.push_back(point);
 }
 
-bool FreeHandDrawing::equalPoints()
+bool FreeHandDrawing::isNoSizeObjekt()
 {
     if(points.size() > 2)
         return false;

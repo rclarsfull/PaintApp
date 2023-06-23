@@ -13,7 +13,6 @@ public:
     Triangle& operator=(const Triangle&) = delete;
     ~Triangle();
     void draw(QPainter &painter) override;
-    bool equalPoints() override;
     void moveTo(QPoint newPoint) override;
 };
 

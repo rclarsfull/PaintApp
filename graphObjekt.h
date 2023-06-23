@@ -12,7 +12,7 @@ public:
     virtual ~GraphObjekt(){};
     virtual void draw(QPainter &painter) = 0;
     virtual void update(QPoint newPoint){};
-    virtual bool equalPoints() = 0;
+    virtual bool isNoSizeObjekt() {return false;};
     virtual bool hit(QPoint click) = 0;
     virtual void moveTo(QPoint point) = 0;
     virtual GraphObjekt* copy() = 0;

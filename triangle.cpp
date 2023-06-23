@@ -9,10 +9,6 @@ void Triangle::draw(QPainter &painter)
 
 }
 
-bool Triangle::equalPoints()
-{
- return false;
-}
 
 void Triangle::moveTo(QPoint newPoint)
 {

@@ -187,7 +187,7 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton && dragging) {
         dragging = false;
         if(scene.getCurrentObjekt() != nullptr && scene.getCurrentObjekt()->isValid()){
-            if(!scene.getCurrentObjekt()->equalPoints())
+            if(!scene.getCurrentObjekt()->isNoSizeObjekt())
               scene.addCurentObjektToList();
             scene.setCurrentObjekt(nullptr);
         }

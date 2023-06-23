@@ -2,7 +2,7 @@
 
 Polygone::Polygone(QPoint origen, QColor color):GraphObjekt(origen,color,false), points(), valid(false){}
 
-Polygone::Polygone(QPoint origen, QColor color, std::vector<QPoint> points):GraphObjekt(origen,color,false), points(points), valid(false){}
+Polygone::Polygone(QPoint origen, QColor color, std::vector<QPoint> points):GraphObjekt(origen,color,false), points(), valid(false){}
 
 Polygone::~Polygone(){}
 
@@ -32,10 +32,7 @@ void Polygone::draw(QPainter &painter)
     }
 }
 
-bool Polygone::equalPoints()
-{
-    return false;
-}
+
 
 bool Polygone::hit(QPoint click)
 {
@@ -49,7 +46,7 @@ void Polygone::calcBBox(QPoint &min, QPoint &max)
 
 GraphObjekt *Polygone::copy()
 {
-    return new Polygone(origin, color, points);
+    return new Polygone(origin, color,points); // need other construcktor
 }
 
 void Polygone::moveTo(QPoint point)

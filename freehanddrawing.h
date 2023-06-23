@@ -18,7 +18,7 @@ public:
     ~FreeHandDrawing();
     void draw(QPainter &painter) override;
     void addPoint(QPoint point);
-    bool equalPoints() override;
+    bool isNoSizeObjekt() override;
     bool hit(QPoint click) override;
     void moveTo(QPoint point) override;
     GraphObjekt* copy() override;

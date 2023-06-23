@@ -16,7 +16,7 @@ public:
     ~Circle() override;
     void draw(QPainter &painter) override;
     void update(QPoint newPoint) override;
-    bool equalPoints() override;
+    bool isNoSizeObjekt() override;
     bool hit(QPoint click) override;
     void moveTo(QPoint point) override;
     GraphObjekt* copy() override;
