@@ -16,19 +16,25 @@ void Polygone::draw(QPainter &painter)
             painter.drawEllipse(points[i],4,4);
         }
     }
-
     painter.setBrush(QBrush(Qt::NoBrush));
-    if(filled)
-        painter.setBrush(QBrush(color, Qt::SolidPattern));
     if(points.size() > 0){
         painter.setPen(QPen(color,2,Qt::SolidLine));
         painter.drawLine(origin, points.front());
-        for(unsigned int i = 1; i < points.size();i++){
+        for(unsigned int i = 1; i < points.size();i++)
             painter.drawLine(points[i-1],points[i]);
-        }
         if(valid)
             painter.drawLine(points.back(), origin);
         painter.setBrush(QBrush(color, Qt::NoBrush));
+    }
+    if(selected && points.size() > 0){
+        painter.setPen(QPen(QColor("red"),5, Qt::DashLine));
+        painter.drawLine(origin, points.front());
+            for(unsigned int i = 1; i < points.size();i++)
+                painter.drawLine(points[i-1],points[i]);
+            if(valid)
+                painter.drawLine(points.back(), origin);
+            painter.setBrush(QBrush(color, Qt::NoBrush));
+
     }
 }
 
@@ -64,7 +70,7 @@ void Polygone::calcBBox(QPoint &min, QPoint &max)
 
 GraphObjekt *Polygone::copy()
 {
-    return new Polygone(origin, color,points); // need other construcktor
+    return new Polygone(origin, color,points);
 }
 
 void Polygone::moveTo(QPoint point)
