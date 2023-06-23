@@ -16,5 +16,5 @@ void Polygone::update(QPoint newPoint)
 
 bool Polygone::equalPoints()
 {
-
+    return false;
 }

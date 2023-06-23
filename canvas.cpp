@@ -17,6 +17,7 @@ Canvas::Canvas(QWidget *parent)
 
     type = NONE;
     dragging = false;
+    mode = CREATE;
 }
 
 Canvas::~Canvas()
