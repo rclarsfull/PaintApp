@@ -20,6 +20,7 @@ public:
     bool hit(QPoint click) override;
     void moveTo(QPoint point) override;
     GraphObjekt* copy() override;
+    void calcBBox(QPoint &min, QPoint &max) override;
 };
 
 #endif // CIRCLE_H

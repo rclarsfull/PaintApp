@@ -54,3 +54,9 @@ GraphObjekt *Rectangle::copy()
 {
     return new Rectangle(origin, lowerRightCorner, color, filled);
 }
+
+void Rectangle::calcBBox(QPoint &min, QPoint &max)
+{
+    min = origin;
+    max = lowerRightCorner;
+}

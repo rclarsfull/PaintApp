@@ -51,3 +51,9 @@ GraphObjekt *Line::copy()
 {
     return new Line(origin, endPoint, color);
 }
+
+void Line::calcBBox(QPoint &min, QPoint &max)
+{
+    min = origin;
+    max = endPoint;
+}

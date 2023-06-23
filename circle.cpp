@@ -62,3 +62,11 @@ GraphObjekt *Circle::copy()
 {
     return new Circle(origin, outerPoint, color, filled);
 }
+
+void Circle::calcBBox(QPoint &min, QPoint &max)
+{
+    QPoint circleVec = outerPoint - origin;
+    float rad = std::sqrt(circleVec.x()*circleVec.x() + circleVec.y()*circleVec.y());
+    min = QPoint(origin.x()-rad, origin.y()-rad);
+    max = QPoint(origin.x()+rad, origin.y()+rad);
+}

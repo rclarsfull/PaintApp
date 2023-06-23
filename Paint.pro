@@ -17,6 +17,7 @@ HEADERS += paint.h \
            scene.h \
            triangle.h
 SOURCES += paint.cpp \
+           BBoxDecorator.cpp \
            canvas.cpp \
            circle.cpp \
            freehanddrawing.cpp \

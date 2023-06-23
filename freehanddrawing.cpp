@@ -60,3 +60,23 @@ GraphObjekt *FreeHandDrawing::copy()
 {
     return new FreeHandDrawing(origin, color, points);
 }
+
+void FreeHandDrawing::calcBBox(QPoint &min, QPoint &max)
+{
+    int xmin,xmax, ymin, ymax;
+    xmin = xmax = origin.x();
+    ymin = ymax = origin.y();
+    for (unsigned int i = 0; i < points.size(); ++i) {
+        QPoint p = points.at(i);
+        if(p.x() < xmin)
+            xmin = p.x();
+        if(p.x() > xmax)
+            xmax = p.x();
+        if(p.y() < ymin)
+            ymin = p.y();
+        if(p.y() > ymax)
+            ymax = p.y();
+    }
+    min = QPoint(xmin, ymin);
+    max = QPoint(xmax, ymax);
+}

@@ -5,8 +5,8 @@
 
 class BBoxDecorator: GraphObjekt{
 public:
-    GraphObjekt *getGraphObj() const{return graphObj;}
-
+    GraphObjekt *getGraphObj() const;
+    void calcBBox(QPoint &min, QPoint &max) override;
 private:
     GraphObjekt *graphObj;
 };
