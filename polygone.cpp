@@ -2,6 +2,8 @@
 
 Polygone::Polygone(QPoint origen, QColor color):GraphObjekt(origen,color,false), points(), valid(false){}
 
+Polygone::Polygone(QPoint origen, QColor color, std::vector<QPoint> points):GraphObjekt(origen,color,false), points(points), valid(false){}
+
 Polygone::~Polygone(){}
 
 void Polygone::draw(QPainter &painter)
@@ -47,7 +49,7 @@ void Polygone::calcBBox(QPoint &min, QPoint &max)
 
 GraphObjekt *Polygone::copy()
 {
-    return new Polygone(origin, color); // need other construcktor
+    return new Polygone(origin, color, points);
 }
 
 void Polygone::moveTo(QPoint point)

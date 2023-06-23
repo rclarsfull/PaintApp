@@ -9,6 +9,7 @@ class Polygone: public GraphObjekt
     bool valid;
 public:
     Polygone(QPoint origen, QColor color);
+    Polygone(QPoint origen, QColor color, std::vector<QPoint> points);
     Polygone(const Polygone&) = delete;
     Polygone& operator=(const Polygone&) = delete;
     ~Polygone();
