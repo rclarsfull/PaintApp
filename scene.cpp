@@ -76,23 +76,17 @@ void Scene::checkforHit(QPoint click)
 
 void Scene::addToSelected(GraphObjekt *graphobject)
 {
-    graphobject->setSelected(true);/*
-    selectedObjects.push_back(graphobject);
-    graphobject->setSelected(true);*/
+    graphobject->setSelected(true);
 }
 
 void Scene::removeFromSelected(GraphObjekt *graphobject)
 {
-    //selectedObjects.remove(graphobject);
+
     graphobject->setSelected(false);
 }
 
 void Scene::clearSelected()
 {
-    /*for (std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); ++it) {
-        (*it)->setSelected(false);
-    }
-    selectedObjects.clear();*/
     for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++){
         (*it)->setSelected(false);
     }
@@ -105,16 +99,8 @@ void Scene::deleteSelected()
             it = graphObjekts.erase(it);
         }else
             it++;
-//        for(std::list<GraphObjekt*>::iterator it = selectedObjects.begin(); it != selectedObjects.end(); it++){
-//            if(*yt == *it){
-//                GraphObjekt* tmp = *yt;
-//                yt = graphObjekts.erase(yt);
-//                delete tmp;
-//               // --yt;
-//            }
-//        }
     }
-    //clearSelected();
+
 }
 
 void Scene::recolorSelected(QColor color)
