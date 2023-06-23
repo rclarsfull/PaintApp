@@ -36,11 +36,29 @@ void Polygone::draw(QPainter &painter)
 
 bool Polygone::hit(QPoint click)
 {
+
+    QVector<QPoint*> allPoints;
+    allPoints.push_back(&origin);
+    for(unsigned int i = 0; i < points.size();i++)
+        allPoints.push_back(&points[i]);
+
+    for(unsigned int i = 1; i <= allPoints.size();i++){
+        QPoint startToClick = click - *allPoints[(i-1)%allPoints.size()];
+        QPoint lineVec = *allPoints[i%allPoints.size()] - *allPoints[(i-1)%allPoints.size()];
+        float t = (float)(startToClick.x() * lineVec.x() + startToClick.y() * lineVec.y()) / (float)(lineVec.x() * lineVec.x() + lineVec.y() * lineVec.y());
+        QPoint intersect = *allPoints[(i-1)%allPoints.size()] + t*lineVec;
+        QPoint v = intersect - click;
+        float distance = v.x() * v.x() + v.y() * v.y();
+        //qDebug() << distance;
+        if((distance < 10) && (0 <= t && t <= 1))
+            return true;
+    }
     return false;
 }
 
 void Polygone::calcBBox(QPoint &min, QPoint &max)
 {
+
 
 }
 
@@ -51,12 +69,11 @@ GraphObjekt *Polygone::copy()
 
 void Polygone::moveTo(QPoint point)
 {
-
+    origin+=point;
+    for(QPoint &p:points)
+        p+=point;
 }
 
-void calcBBox(QPoint &min, QPoint &max){
-
-}
 
 void Polygone::addPoint(QPoint point){
     QPoint vec = origin - point;

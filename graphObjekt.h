@@ -12,12 +12,12 @@ public:
     virtual ~GraphObjekt(){};
     virtual void draw(QPainter &painter) = 0;
     virtual void update(QPoint newPoint){};
-    virtual bool isNoSizeObjekt() {return false;};
     virtual bool hit(QPoint click) = 0;
     virtual void moveTo(QPoint point) = 0;
     virtual GraphObjekt* copy() = 0;
     virtual void calcBBox(QPoint &min, QPoint &max) = 0;
     virtual bool isValid() {return true;};
+    virtual bool isNoSizeObjekt() {return false;};
     void setSelected(bool b){selected = b;}
     bool getSelected(){return selected;}
     void setColor(QColor color){this->color = color;}
