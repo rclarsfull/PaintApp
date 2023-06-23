@@ -26,6 +26,7 @@ public:
     void recolorSelected(QColor color);
     void moveObjects(QPoint point);
     void setFillForSelected(bool fill);
+    void duplicateSelected();
 private:
     void addToSelected(GraphObjekt *graphobject);
     void removeFromSelected(GraphObjekt *graphobject);

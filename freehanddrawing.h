@@ -11,7 +11,8 @@ class FreeHandDrawing: public GraphObjekt
 {
     std::vector<QPoint> points;
 public:
-    FreeHandDrawing(QPoint origen, QColor color);
+    FreeHandDrawing(QPoint origin, QColor color);
+    FreeHandDrawing(QPoint origin, QColor color, std::vector<QPoint> points);
     FreeHandDrawing(const FreeHandDrawing&) = delete;
     FreeHandDrawing& operator=(const FreeHandDrawing&) = delete;
     ~FreeHandDrawing();
@@ -21,6 +22,7 @@ public:
     bool equalPoints() override;
     bool hit(QPoint click) override;
     void moveTo(QPoint point) override;
+    GraphObjekt* copy() override;
 };
 
 #endif // FREEHANDDRAWING_H

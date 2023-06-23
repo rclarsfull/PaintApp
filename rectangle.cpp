@@ -49,3 +49,8 @@ void Rectangle::moveTo(QPoint point)
     origin = origin + point;
     lowerRightCorner = lowerRightCorner + point;
 }
+
+GraphObjekt *Rectangle::copy()
+{
+    return new Rectangle(origin, lowerRightCorner, color, filled);
+}

@@ -3,6 +3,8 @@
 
 FreeHandDrawing::FreeHandDrawing(QPoint origen, QColor color):GraphObjekt(origen,color, false){}
 
+FreeHandDrawing::FreeHandDrawing(QPoint origin, QColor color, std::vector<QPoint> points): GraphObjekt(origin, color, false), points(points){}
+
 FreeHandDrawing::~FreeHandDrawing(){}
 
 void FreeHandDrawing::draw(QPainter &painter)
@@ -52,4 +54,9 @@ void FreeHandDrawing::moveTo(QPoint point)
     for (unsigned int i = 0; i < points.size(); ++i) {
         points.at(i) = points.at(i) + point;
     }
+}
+
+GraphObjekt *FreeHandDrawing::copy()
+{
+    return new FreeHandDrawing(origin, color, points);
 }

@@ -143,3 +143,13 @@ void Scene::setFillForSelected(bool fill)
         }
     }
 }
+
+void Scene::duplicateSelected()
+{
+    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
+        if((*it)->getSelected()){
+            GraphObjekt* graphobj = (*it)->copy();
+            addGraphObjekt(graphobj);
+        }
+    }
+}

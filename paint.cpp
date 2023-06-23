@@ -173,7 +173,8 @@ void Paint::unselectAll()
 
 void Paint::duplicateBtnClicked()
 {
-
+    viewport->getScene()->duplicateSelected();
+    update();
 }
 
 void Paint::primModeChanged()

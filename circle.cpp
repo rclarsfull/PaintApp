@@ -57,3 +57,8 @@ void Circle::moveTo(QPoint point)
     origin = origin + point;
     outerPoint = outerPoint + point;
 }
+
+GraphObjekt *Circle::copy()
+{
+    return new Circle(origin, outerPoint, color, filled);
+}

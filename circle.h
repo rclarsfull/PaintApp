@@ -19,6 +19,7 @@ public:
     bool equalPoints() override;
     bool hit(QPoint click) override;
     void moveTo(QPoint point) override;
+    GraphObjekt* copy() override;
 };
 
 #endif // CIRCLE_H

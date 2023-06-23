@@ -46,3 +46,8 @@ void Line::moveTo(QPoint point)
     origin = origin + point;
     endPoint = endPoint + point;
 }
+
+GraphObjekt *Line::copy()
+{
+    return new Line(origin, endPoint, color);
+}
