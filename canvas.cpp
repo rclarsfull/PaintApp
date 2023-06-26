@@ -48,6 +48,8 @@ void Canvas::setPrimitiveMode(int mode)
 void Canvas::setInteractionMode(int mode)
 {
     this->mode = (Canvas::InteractionMode)mode;
+    scene.setCurrentObjekt(nullptr);
+    update();
 }
 
 void Canvas::setFillMode(bool isFilled)
