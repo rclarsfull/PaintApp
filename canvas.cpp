@@ -122,7 +122,7 @@ void Canvas::mousePressEvent(QMouseEvent *event)
                 if(scene.getCurrentObjekt() == nullptr)
                     scene.setCurrentObjekt(new Polygone(lastMouseClickPos,color));
                 else
-                    dynamic_cast<Polygone*>(scene.getCurrentObjekt())->addPoint(lastMouseClickPos);
+                    scene.getCurrentObjekt()->update(event->pos());
                 break;
             }
             update();
@@ -159,7 +159,7 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
                 scene.getCurrentObjekt()->update(event->pos());
                 break;
             case FREE_HAND:
-                dynamic_cast<FreeHandDrawing*>(scene.getCurrentObjekt())->addPoint(event->pos());
+                scene.getCurrentObjekt()->update(event->pos());
                 break;
             case TRIANGLE:
                 break;

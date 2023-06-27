@@ -23,14 +23,14 @@ void FreeHandDrawing::draw(QPainter &painter)
     }
 }
 
-void FreeHandDrawing::addPoint(QPoint point)
+void FreeHandDrawing::update(QPoint newPoint)
 {
     if(points.size()>1){
-        QPoint vec = points.back() - point;
-            if((vec.x()*vec.x() + vec.y()*vec.y() > 25))
-            points.push_back(point);
+        QPoint vec = points.back() - newPoint;
+        if((vec.x()*vec.x() + vec.y()*vec.y() > 25))
+            points.push_back(newPoint);
     }else
-        points.push_back(point);
+        points.push_back(newPoint);
 }
 
 bool FreeHandDrawing::isNoSizeObjekt()
