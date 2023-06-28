@@ -72,7 +72,6 @@ bool Polygone::hit(QPoint click)
 void Polygone::calcBBox(QPoint &min, QPoint &max)
 {
 
-
 }
 
 GraphObjekt *Polygone::copy()

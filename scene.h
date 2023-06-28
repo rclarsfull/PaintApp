@@ -2,21 +2,20 @@
 #define SCENE_H
 #include <queue>
 #include <QPoint>
-#include "graphObjekt.h"
-
+#include "BBoxDecorator.h"
 
 class Scene
 {
-    std::list<GraphObjekt*> graphObjekts;
-    GraphObjekt *currentObjekt;
+    std::list<BBoxDecorator*> graphObjekts;
+    BBoxDecorator *currentObjekt;
     //std::list<GraphObjekt*> selectedObjects;
 public:
     Scene();
     ~Scene();
-    void setCurrentObjekt(GraphObjekt *graphObjekt);
-    GraphObjekt* getCurrentObjekt();
+    void setCurrentObjekt(BBoxDecorator *graphObjekt);
+    BBoxDecorator* getCurrentObjekt();
     void addCurentObjektToList();
-    void addGraphObjekt(GraphObjekt *graphObjekt);
+    void addGraphObjekt(BBoxDecorator *graphObjekt);
     void drawAll(QPainter &painter);
     void clear();
 
@@ -27,9 +26,11 @@ public:
     void moveObjects(QPoint point);
     void setFillForSelected(bool fill);
     void duplicateSelected();
+    void setBBox(bool bBox);
 private:
-    void addToSelected(GraphObjekt *graphobject);
-    void removeFromSelected(GraphObjekt *graphobject);
+    void addToSelected(BBoxDecorator *graphobject);
+    void removeFromSelected(BBoxDecorator *graphobject);
+    bool bBox;
 };
 
 #endif // SCENE_H
