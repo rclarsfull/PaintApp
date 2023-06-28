@@ -71,7 +71,19 @@ bool Polygone::hit(QPoint click)
 
 void Polygone::calcBBox(QPoint &min, QPoint &max)
 {
-
+    int xMax = origin.rx(), xMin = origin.rx(), yMax = origin.ry(), yMin= origin.ry();
+    for(QPoint p:points){
+        if(xMax < p.x())
+            xMax = p.x();
+        else if (xMin > p.x())
+            xMin = p.x();
+        if (yMax < p.y())
+            yMax = p.y();
+        else if (yMin > p.y())
+            yMin = p.y();
+    }
+    min = QPoint(xMin, yMin);
+    max = QPoint(xMax, yMax);
 }
 
 GraphObjekt *Polygone::copy()
