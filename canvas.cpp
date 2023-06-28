@@ -105,7 +105,7 @@ void Canvas::mousePressEvent(QMouseEvent *event)
                 break;
             case POLYGON:
                 if(scene.getCurrentObjekt() == nullptr)
-                    scene.setCurrentObjekt(new Polygone(lastMouseClickPos,color));
+                    scene.setCurrentObjekt(new Polygone(lastMouseClickPos,color,fillMode));
                 else
                     scene.getCurrentObjekt()->update(event->pos());
                 break;
