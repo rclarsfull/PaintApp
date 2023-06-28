@@ -63,6 +63,7 @@ Paint::Paint(QWidget *parent)
     btnDeleteObj = new QPushButton("Delete Selected");
 
     cbOutline = new QCheckBox("Show Only &Outline", this);
+    showBBoxBtn = new QCheckBox("Show Bounding-Box", this);
 
 	// create layout and add gui elements to it
 	QGridLayout *mainLayout = new QGridLayout;
@@ -70,13 +71,14 @@ Paint::Paint(QWidget *parent)
     mainLayout->addWidget(viewport,       0, 0, 1, 4);
     mainLayout->addWidget(btnSetCol,      2, 3);
     mainLayout->addWidget(cbOutline,      1, 1, Qt::AlignLeft);
-    mainLayout->addWidget(lblPrimModes,   1, 2, Qt::AlignRight);
+    //mainLayout->addWidget(lblPrimModes,   1, 2, Qt::AlignRight);
     mainLayout->addWidget(cobPrimModes,   1, 3);
     mainLayout->addWidget(btnDeleteObj,   2, 1);
     mainLayout->addWidget(btnClearCanvas, 2, 2);
     mainLayout->addWidget(radioGroupBox,  1, 0, 3, 1);
     mainLayout->addWidget(unselect,       3, 1);
     mainLayout->addWidget(duplicateBtn,   3, 2);
+    mainLayout->addWidget(showBBoxBtn,    1, 2);
 
 	// add layout to this widget instance
 	setLayout(mainLayout);
@@ -103,6 +105,8 @@ Paint::Paint(QWidget *parent)
             this, SLOT(unselectAll()));
     connect(duplicateBtn, SIGNAL(clicked()),
             this, SLOT(duplicateBtnClicked()));
+    connect(showBBoxBtn, SIGNAL(toggled(bool)),
+            this, SLOT(showBBox(bool)));
 }
 
 /** d'tor */
@@ -123,6 +127,7 @@ Paint::~Paint()
     delete radioGroupBox;
     delete radioGroup;
     delete duplicateBtn;
+    delete showBBoxBtn;
 }
 
 /** method for handling button clicked event */
@@ -175,6 +180,11 @@ void Paint::duplicateBtnClicked()
 {
     viewport->getScene()->duplicateSelected();
     update();
+}
+
+void Paint::showBBox(bool bBox)
+{
+
 }
 
 void Paint::primModeChanged()

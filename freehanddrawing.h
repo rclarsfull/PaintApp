@@ -17,7 +17,7 @@ public:
     FreeHandDrawing& operator=(const FreeHandDrawing&) = delete;
     ~FreeHandDrawing();
     void draw(QPainter &painter) override;
-    void addPoint(QPoint point);
+    void update(QPoint newPoint) override;
     bool isNoSizeObjekt() override;
     bool hit(QPoint click) override;
     void moveTo(QPoint point) override;

@@ -38,7 +38,14 @@ void Polygone::draw(QPainter &painter)
     }
 }
 
-
+void Polygone::update(QPoint newPoint)
+{
+    QPoint vec = origin - newPoint;
+    if((vec.x()*vec.x() + vec.y()*vec.y()) > 25){
+            points.push_back(newPoint);
+    }else
+            valid = true;
+}
 
 bool Polygone::hit(QPoint click)
 {
@@ -78,15 +85,6 @@ void Polygone::moveTo(QPoint point)
     origin+=point;
     for(QPoint &p:points)
         p+=point;
-}
-
-
-void Polygone::addPoint(QPoint point){
-    QPoint vec = origin - point;
-    if((vec.x()*vec.x() + vec.y()*vec.y()) > 25){
-        points.push_back(point);
-   }else
-    valid = true;
 }
 
 bool Polygone::isValid(){

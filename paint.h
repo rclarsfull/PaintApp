@@ -30,6 +30,7 @@ private slots:
     void changeInteractionMode();
     void unselectAll();
     void duplicateBtnClicked();
+    void showBBox(bool);
 private:
 	Canvas *viewport;
 
@@ -42,6 +43,7 @@ private:
     QRadioButton *moveObj;
     QPushButton *unselect;
     QPushButton *duplicateBtn;
+    QCheckBox *showBBoxBtn;
 
 	QPushButton *btnClearCanvas;
 	QComboBox *cobPrimModes;
