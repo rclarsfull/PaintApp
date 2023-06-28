@@ -71,14 +71,14 @@ Paint::Paint(QWidget *parent)
     mainLayout->addWidget(viewport,       0, 0, 1, 4);
     mainLayout->addWidget(btnSetCol,      2, 3);
     mainLayout->addWidget(cbOutline,      1, 1, Qt::AlignLeft);
-    mainLayout->addWidget(lblPrimModes,   1, 2, Qt::AlignRight);
+    //mainLayout->addWidget(lblPrimModes,   1, 2, Qt::AlignRight);
     mainLayout->addWidget(cobPrimModes,   1, 3);
     mainLayout->addWidget(btnDeleteObj,   2, 1);
     mainLayout->addWidget(btnClearCanvas, 2, 2);
     mainLayout->addWidget(radioGroupBox,  1, 0, 3, 1);
     mainLayout->addWidget(unselect,       3, 1);
     mainLayout->addWidget(duplicateBtn,   3, 2);
-    mainLayout->addWidget(showBBoxBtn,    3, 3);
+    mainLayout->addWidget(showBBoxBtn,    1, 2);
 
 	// add layout to this widget instance
 	setLayout(mainLayout);
