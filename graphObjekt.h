@@ -7,7 +7,7 @@ class GraphObjekt{
 
 public:
     GraphObjekt(QPoint point, QColor color, bool filled):origin(point), color(color), selected(false),filled(filled){};
-    GraphObjekt(const GraphObjekt& g) = delete;
+    GraphObjekt(const GraphObjekt& g): origin(g.origin), color(g.color), selected(false), filled(g.filled){};
     GraphObjekt& operator=(const GraphObjekt&) = delete;
     virtual ~GraphObjekt(){};
     virtual void draw(QPainter &painter) = 0;
