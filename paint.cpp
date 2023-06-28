@@ -184,7 +184,8 @@ void Paint::duplicateBtnClicked()
 
 void Paint::showBBox(bool bBox)
 {
-
+    viewport->getScene()->setBBox(bBox);
+    update();
 }
 
 void Paint::primModeChanged()

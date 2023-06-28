@@ -1,7 +1,7 @@
 #include <QDebug>
 #include "scene.h"
 
-Scene::Scene():graphObjekts(),currentObjekt(nullptr)
+Scene::Scene():graphObjekts(),currentObjekt(nullptr), bBox(false)
 {
 
 }
@@ -10,14 +10,14 @@ Scene::~Scene()
     clear();
 }
 
-void Scene::setCurrentObjekt(GraphObjekt *graphObjekt)
+void Scene::setCurrentObjekt(BBoxDecorator *graphObjekt)
 {
     if(currentObjekt != nullptr)
         delete currentObjekt;
     currentObjekt = graphObjekt;
 }
 
-GraphObjekt* Scene::getCurrentObjekt()
+BBoxDecorator* Scene::getCurrentObjekt()
 {
     return currentObjekt;
 }
@@ -30,7 +30,7 @@ void Scene::addCurentObjektToList()
     }
 }
 
-void Scene::addGraphObjekt(GraphObjekt *graphObjekt)
+void Scene::addGraphObjekt(BBoxDecorator *graphObjekt)
 {
     if(graphObjekt != nullptr)
         graphObjekts.push_back(graphObjekt);
@@ -38,18 +38,20 @@ void Scene::addGraphObjekt(GraphObjekt *graphObjekt)
 
 void Scene::drawAll(QPainter &painter)
 {
-
-    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin();it != graphObjekts.end();it++){
+    for(std::list<BBoxDecorator*>::iterator it = graphObjekts.begin();it != graphObjekts.end();it++){
+        (*it)->setBBox(bBox);
         (*it)->draw(painter);
     }
-    if(currentObjekt != nullptr)
+    if(currentObjekt != nullptr){
+        currentObjekt->setBBox(bBox);
         currentObjekt->draw(painter);
+    }
 }
 
 void Scene::clear()
 {
-    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); ){
-        GraphObjekt* tmp = *it;
+    for(std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); ){
+        BBoxDecorator* tmp = *it;
         it = graphObjekts.erase(it);
         delete tmp;
     }
@@ -61,7 +63,7 @@ void Scene::clear()
 
 void Scene::checkforHit(QPoint click)
 {
-    for(std::list<GraphObjekt*>::reverse_iterator it = graphObjekts.rbegin();it != graphObjekts.rend(); it++){
+    for(std::list<BBoxDecorator*>::reverse_iterator it = graphObjekts.rbegin();it != graphObjekts.rend(); it++){
         if(*it != nullptr && (*it)->hit(click)){
             if((*it)->getSelected()){
                 removeFromSelected(*it);
@@ -74,12 +76,12 @@ void Scene::checkforHit(QPoint click)
     }
 }
 
-void Scene::addToSelected(GraphObjekt *graphobject)
+void Scene::addToSelected(BBoxDecorator *graphobject)
 {
     graphobject->setSelected(true);
 }
 
-void Scene::removeFromSelected(GraphObjekt *graphobject)
+void Scene::removeFromSelected(BBoxDecorator *graphobject)
 {
 
     graphobject->setSelected(false);
@@ -87,14 +89,14 @@ void Scene::removeFromSelected(GraphObjekt *graphobject)
 
 void Scene::clearSelected()
 {
-    for(std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++){
+    for(std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++){
         (*it)->setSelected(false);
     }
 }
 
 void Scene::deleteSelected()
 {
-    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();) {
+    for (std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();) {
         if((*it)->getSelected()){
             it = graphObjekts.erase(it);
         }else
@@ -105,7 +107,7 @@ void Scene::deleteSelected()
 
 void Scene::recolorSelected(QColor color)
 {
-    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();it++) {
+    for (std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();it++) {
         if((*it)->getSelected()){
             (*it)->setColor(color);
         }
@@ -114,7 +116,7 @@ void Scene::recolorSelected(QColor color)
 
 void Scene::moveObjects(QPoint point)
 {
-    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
+    for (std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
         if((*it)->getSelected()){
             (*it)->moveTo(point);
         }
@@ -123,7 +125,7 @@ void Scene::moveObjects(QPoint point)
 
 void Scene::setFillForSelected(bool fill)
 {
-    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
+    for (std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
         if((*it)->getSelected()){
             (*it)->setFilled(fill);
         }
@@ -132,10 +134,15 @@ void Scene::setFillForSelected(bool fill)
 
 void Scene::duplicateSelected()
 {
-    for (std::list<GraphObjekt*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
+    for (std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end(); it++) {
         if((*it)->getSelected()){
-            GraphObjekt* graphobj = (*it)->copy();
+            BBoxDecorator* graphobj = (*it)->copy();
             addGraphObjekt(graphobj);
         }
     }
+}
+
+void Scene::setBBox(bool bBox)
+{
+    this->bBox = bBox;
 }

@@ -18,11 +18,11 @@ public:
     virtual void calcBBox(QPoint &min, QPoint &max) = 0;
     virtual bool isValid() {return true;}
     virtual bool isNoSizeObjekt() {return false;}
-    void setSelected(bool b){selected = b;}
-    bool getSelected(){return selected;}
-    void setColor(QColor color){this->color = color;}
-    bool getFilled(){return filled;}
-    void setFilled(bool filled){this->filled = filled;}
+    virtual void setSelected(bool b){selected = b;}
+    virtual bool getSelected(){return selected;}
+    virtual void setColor(QColor color){this->color = color;}
+    virtual bool getFilled(){return filled;}
+    virtual void setFilled(bool filled){this->filled = filled;}
 protected:
     QPoint origin;
     QColor color;

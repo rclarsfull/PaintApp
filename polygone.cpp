@@ -1,5 +1,4 @@
 #include "polygone.h"
-#include "qdebug.h"
 
 Polygone::Polygone(QPoint origen, QColor color, bool filled):GraphObjekt(origen,color,filled), valid(false), poligone(){
     poligone << origen;
@@ -15,9 +14,6 @@ void Polygone::draw(QPainter &painter)
         painter.setPen(QPen(Qt::red,2,Qt::SolidLine));
         painter.setBrush(QBrush(Qt::SolidPattern));
         painter.drawEllipse(origin,4,4);
-//        for(unsigned int i = 0; i < poligone.size();i++){
-//            painter.drawEllipse(poligone.point(i),4,4);
-//        }
     }
     painter.setPen(QPen(color,2,Qt::SolidLine));
     if(valid && filled){
@@ -63,6 +59,7 @@ bool Polygone::hit(QPoint click)
 void Polygone::calcBBox(QPoint &min, QPoint &max)
 {
     int xMax = origin.rx(), xMin = origin.rx(), yMax = origin.ry(), yMin= origin.ry();
+
     QPoint p;
     for(int i = 0; i < poligone.size(); i++){
         p = poligone.point(i);

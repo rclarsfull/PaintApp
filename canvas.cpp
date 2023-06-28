@@ -9,6 +9,7 @@
 #include "circle.h"
 #include "polygone.h"
 #include "rectangle.h"
+#include "BBoxDecorator.h"
 
 Canvas::Canvas(QWidget *parent)
     : QFrame(parent),scene(Scene())
@@ -82,6 +83,8 @@ void Canvas::mousePressEvent(QMouseEvent *event)
         dragging = true;
         lastMouseClickPos = event->pos();
 
+        BBoxDecorator *bBoxDecorator = nullptr;
+
         switch (mode) {
         case CREATE:
             switch(type){
@@ -89,23 +92,34 @@ void Canvas::mousePressEvent(QMouseEvent *event)
                 qDebug() << "Error: no Paint type declared!\n";
                 break;
             case LINE:
-                scene.setCurrentObjekt(new Line(lastMouseClickPos, lastMouseClickPos, color));
+                bBoxDecorator = new BBoxDecorator(new Line(lastMouseClickPos, lastMouseClickPos, color));
+                scene.setCurrentObjekt(bBoxDecorator);
+                //scene.setCurrentObjekt(new Line(lastMouseClickPos, lastMouseClickPos, color));
                 break;
             case RECTANGLE:
-                scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+                bBoxDecorator = new BBoxDecorator(new Rectangle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+                scene.setCurrentObjekt(bBoxDecorator);
+                //scene.setCurrentObjekt(new Rectangle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
                 break;
             case CIRCLE:
-                scene.setCurrentObjekt(new Circle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+                bBoxDecorator = new BBoxDecorator(new Circle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
+                scene.setCurrentObjekt(bBoxDecorator);
+                //scene.setCurrentObjekt(new Circle(lastMouseClickPos, lastMouseClickPos, color, fillMode));
                 break;
             case FREE_HAND:
-                scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
+                bBoxDecorator = new BBoxDecorator(new FreeHandDrawing(lastMouseClickPos,color));
+                scene.setCurrentObjekt(bBoxDecorator);
+                //scene.setCurrentObjekt(new FreeHandDrawing(lastMouseClickPos,color));
                 break;
             case TRIANGLE:
                 qDebug() << "Not implemented!\n";
                 break;
             case POLYGON:
-                if(scene.getCurrentObjekt() == nullptr)
-                    scene.setCurrentObjekt(new Polygone(lastMouseClickPos,color,fillMode));
+                if(scene.getCurrentObjekt() == nullptr){
+                    bBoxDecorator = new BBoxDecorator(new Polygone(lastMouseClickPos,color,fillMode));
+                    scene.setCurrentObjekt(bBoxDecorator);
+                //scene.setCurrentObjekt(new Polygone(lastMouseClickPos,color));
+                }
                 else
                     scene.getCurrentObjekt()->update(event->pos());
                 break;
