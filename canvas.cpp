@@ -35,11 +35,6 @@ QSize Canvas::sizeHint() const
     return QSize(640, 480);
 }
 
-/*void Canvas::clearCanvas(void)
-{
-    scene.clear();
-}*/
-
 void Canvas::setPrimitiveMode(int mode)
 {
     type = (Canvas::PrimitiveMode)mode;
@@ -62,16 +57,6 @@ void Canvas::setObjColor(QColor color)
     this->color = color;
     scene.recolorSelected(color);
 }
-
-/*void Canvas::removeSelected()
-{
-    scene.deleteSelected();
-}*/
-
-/*void Canvas::unselectAll()
-{
-    scene.clearSelected();
-}*/
 
 Scene *Canvas::getScene()
 {
