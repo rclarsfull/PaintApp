@@ -5,7 +5,13 @@
 
 class BBoxDecorator: GraphObjekt{
 public:
+    BBoxDecorator(GraphObjekt *graphObject);
     GraphObjekt *getGraphObj() const;
+    void draw(QPainter &painter) override;
+    void update(QPoint newPoint) override;
+    bool hit(QPoint click) override;
+    void moveTo(QPoint point) override;
+    GraphObjekt* copy() override;
     void calcBBox(QPoint &min, QPoint &max) override;
 private:
     GraphObjekt *graphObj;
