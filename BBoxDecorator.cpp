@@ -20,6 +20,7 @@ void BBoxDecorator::draw(QPainter &painter)
         graphObj->calcBBox(min, max);
         QPoint vec = max - min;
         painter.setPen(QPen(QColor("gray"),5, Qt::DashLine));
+        painter.setBrush(Qt::NoBrush);
         painter.drawRect(min.x(), min.y(), vec.x(), vec.y());
     }
 }
