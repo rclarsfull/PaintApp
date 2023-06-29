@@ -105,6 +105,12 @@ void Scene::deleteSelected()
 
 }
 
+void Scene::deleteLastAdded()
+{
+    if(!graphObjekts.empty())
+        graphObjekts.pop_back();
+}
+
 void Scene::recolorSelected(QColor color)
 {
     for (std::list<BBoxDecorator*>::iterator it = graphObjekts.begin(); it != graphObjekts.end();it++) {

@@ -205,5 +205,7 @@ void Canvas::keyPressEvent(QKeyEvent *event)
         else
             scene.deleteSelected();
     }
+    else if(event->keyCombination() == QKeyCombination(Qt::CTRL, Qt::Key_Z))
+        scene.deleteLastAdded();
     update();
 }

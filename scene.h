@@ -22,6 +22,7 @@ public:
     void checkforHit(QPoint click);
     void clearSelected();
     void deleteSelected();
+    void deleteLastAdded();
     void recolorSelected(QColor color);
     void moveObjects(QPoint point);
     void setFillForSelected(bool fill);
