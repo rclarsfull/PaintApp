@@ -199,8 +199,11 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 
 void Canvas::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_Escape){
-        scene.clear();
+    if(event->key() == Qt::Key_Backspace){
+        if(event->keyCombination() == QKeyCombination(Qt::SHIFT, Qt::Key_Backspace))
+            scene.clear();
+        else
+            scene.deleteSelected();
     }
     update();
 }
