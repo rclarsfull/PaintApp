@@ -1,6 +1,7 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QMouseEvent>
+#include <QKeyEvent>
 #include <math.h>
 #include "canvas.h"
 #include "freehanddrawing.h"
@@ -194,4 +195,12 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
         }
         update();
     }
+}
+
+void Canvas::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape){
+        scene.clear();
+    }
+    update();
 }

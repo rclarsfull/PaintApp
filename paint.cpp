@@ -107,6 +107,8 @@ Paint::Paint(QWidget *parent)
             this, SLOT(duplicateBtnClicked()));
     connect(showBBoxBtn, SIGNAL(toggled(bool)),
             this, SLOT(showBBox(bool)));
+
+    viewport->setFocus();
 }
 
 /** d'tor */

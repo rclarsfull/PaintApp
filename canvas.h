@@ -22,14 +22,11 @@ public:
 	QSize minimumSizeHint() const;
 	QSize sizeHint() const;
 
-    //void clearCanvas(void);
 	void setPrimitiveMode(int mode);
     void setInteractionMode(int mode);
 
     void setFillMode(bool isFilled);
     void setObjColor(QColor color);
-    //void removeSelected();
-    //void unselectAll();
     Scene* getScene();
 
 protected:
@@ -39,6 +36,8 @@ protected:
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
 	void mouseReleaseEvent(QMouseEvent *event);
+
+    void keyPressEvent(QKeyEvent *event);
 
 private:
 	bool dragging;
