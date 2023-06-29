@@ -210,8 +210,7 @@ void Canvas::keyPressEvent(QKeyEvent *event)
     else if(event->keyCombination() == QKeyCombination(Qt::CTRL, Qt::Key_A))
         scene.setAllGraphobjektsSelected(true);
     else if(event->key() == Qt::Key_Escape){
-        scene.setAllGraphobjektsSelected(true);
-        qDebug() << "sada";
+        scene.setAllGraphobjektsSelected(false);
     }
     update();
 }
