@@ -28,6 +28,7 @@ public:
     void setFillForSelected(bool fill);
     void duplicateSelected();
     void setBBox(bool bBox);
+    void setAllGraphobjektsSelected(bool);
 private:
     void addToSelected(BBoxDecorator *graphobject);
     void removeFromSelected(BBoxDecorator *graphobject);

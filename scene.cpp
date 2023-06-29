@@ -152,3 +152,9 @@ void Scene::setBBox(bool bBox)
 {
     this->bBox = bBox;
 }
+
+void Scene::setAllGraphobjektsSelected(bool b)
+{
+    for(GraphObjekt *g:graphObjekts)
+        g->setSelected(b);
+}
