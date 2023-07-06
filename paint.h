@@ -12,6 +12,7 @@ class QButtonGroup;
 class QRadioButton;
 class QGroupBox;
 class QVBoxLayout;
+class QMenuBar;
 
 class Paint : public QWidget
 {
@@ -31,6 +32,7 @@ private slots:
     void unselectAll();
     void duplicateBtnClicked();
     void showBBox(bool);
+    void undoFunc();
 private:
 	Canvas *viewport;
 
@@ -44,6 +46,10 @@ private:
     QPushButton *unselect;
     QPushButton *duplicateBtn;
     QCheckBox *showBBoxBtn;
+
+    QMenuBar *bar;
+    QMenu *shortcuts;
+    QAction *undo;
 
 	QPushButton *btnClearCanvas;
 	QComboBox *cobPrimModes;

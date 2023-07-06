@@ -9,6 +9,9 @@
 #include <QRadioButton>
 #include <QGroupBox>
 #include <QVBoxLayout>
+#include <QAction>
+#include <QMenu>
+#include <QMenuBar>
 #include "paint.h"
 #include "canvas.h"
 
@@ -68,6 +71,14 @@ Paint::Paint(QWidget *parent)
 	// create layout and add gui elements to it
 	QGridLayout *mainLayout = new QGridLayout;
 
+    bar = new QMenuBar();
+    shortcuts = new QMenu("&Shortcuts");
+    undo = new QAction("Undo / Ctrl+Z");
+
+    bar->addMenu(shortcuts);
+    shortcuts->addAction(undo);
+    mainLayout->setMenuBar(bar);
+
     mainLayout->addWidget(viewport,       0, 0, 1, 4);
     mainLayout->addWidget(btnSetCol,      2, 3);
     mainLayout->addWidget(cbOutline,      1, 1, Qt::AlignLeft);
@@ -79,6 +90,7 @@ Paint::Paint(QWidget *parent)
     mainLayout->addWidget(unselect,       3, 1);
     mainLayout->addWidget(duplicateBtn,   3, 2);
     mainLayout->addWidget(showBBoxBtn,    1, 2);
+
 
 	// add layout to this widget instance
 	setLayout(mainLayout);
@@ -107,6 +119,10 @@ Paint::Paint(QWidget *parent)
             this, SLOT(duplicateBtnClicked()));
     connect(showBBoxBtn, SIGNAL(toggled(bool)),
             this, SLOT(showBBox(bool)));
+
+
+
+    connect(undo, SIGNAL(triggered(bool)), this, SLOT(undoFunc()));
     viewport->setFocusPolicy(Qt::StrongFocus);
     viewport->setFocus();
 }
@@ -187,6 +203,12 @@ void Paint::duplicateBtnClicked()
 void Paint::showBBox(bool bBox)
 {
     viewport->getScene()->setBBox(bBox);
+    update();
+}
+
+void Paint::undoFunc()
+{
+    viewport->getScene()->deleteLastAdded();
     update();
 }
 
