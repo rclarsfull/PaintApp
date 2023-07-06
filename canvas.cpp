@@ -199,6 +199,7 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 
 void Canvas::keyPressEvent(QKeyEvent *event)
 {
+    qDebug() << event->key()<< "/n";
     if(event->key() == Qt::Key_Backspace){
         if(event->keyCombination() == QKeyCombination(Qt::SHIFT, Qt::Key_Backspace))
             scene.clear();
@@ -210,7 +211,7 @@ void Canvas::keyPressEvent(QKeyEvent *event)
     else if(event->keyCombination() == QKeyCombination(Qt::CTRL, Qt::Key_A))
         scene.setAllGraphobjektsSelected(true);
     else if(event->key() == Qt::Key_Escape){
-        scene.setAllGraphobjektsSelected(true);
+        scene.setAllGraphobjektsSelected(false);
         qDebug() << "sada";
     }
     update();
